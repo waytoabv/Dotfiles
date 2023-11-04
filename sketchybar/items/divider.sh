@@ -4,6 +4,6 @@ sketchybar --add bracket status brew github.bell volume volume_alias \
 sketchybar --add item divider right \
            --set divider label.drawing=off \
                          icon=􀫰 \
-                         icon.font="$FONT:BLACK:22.0" \
-                         background.padding_left=10 \
-                         background.padding_right=0
+                         icon.font="$FONT:BLACK:20.0" \
+                         background.padding_left=5 \
+                         background.padding_right=-10

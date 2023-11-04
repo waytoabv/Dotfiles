@@ -15,7 +15,7 @@ volume_slider=(
 
 volume_icon=(
   click_script="$PLUGIN_DIR/volume_click.sh"
-  padding_left=8
+  padding_left=5
   icon=$VOLUME_100
   icon.width=0
   icon.align=left
@@ -40,4 +40,4 @@ sketchybar --add slider volume right            \
            --set volume_icon "${volume_icon[@]}"
 
 sketchybar --add bracket status battery wifi volume_icon \
-           --set status "${status_bracket[@]}"
+           --set status "${status_bracket[@]}" \
