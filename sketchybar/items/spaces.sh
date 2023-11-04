@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15")
+SPACE_ICONS=("Web" "Code" "Media" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
@@ -13,12 +13,12 @@ do
   sketchybar --add space      space.$sid left                               \
              --set space.$sid associated_space=$sid                         \
                               icon=${SPACE_ICONS[i]}                        \
-                              icon.padding_left=22                          \
-                              icon.padding_right=22                         \
-                              label.padding_right=33                        \
+                              icon.padding_left=20                          \
+                              icon.padding_right=20                         \
+                              label.padding_right=18                        \
                               icon.highlight_color=$RED                     \
-                              background.padding_left=-8                    \
-                              background.padding_right=-8                   \
+                              background.padding_left=1                     \
+                              background.padding_right=1                    \
                               background.color=$BACKGROUND_1                \
                               background.drawing=on                         \
                               label.font="sketchybar-app-font:Regular:16.0" \

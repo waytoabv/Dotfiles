@@ -6,4 +6,4 @@ sketchybar --add item divider right \
                          icon=􀫰 \
                          icon.font="$FONT:BLACK:22.0" \
                          background.padding_left=10 \
-                         background.padding_right=10
+                         background.padding_right=0
