@@ -7,7 +7,7 @@ ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are config
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-PADDINGS=3 # All paddings use this value (icon, label, background)
+PADDINGS=2 # All paddings use this value (icon, label, background)
 
 # Setting up and starting the helper process
 HELPER=git.felix.helper
@@ -45,8 +45,8 @@ sketchybar --bar     height=39                                         \
                      background.padding_left=$PADDINGS                 \
                      background.height=26                              \
                      background.corner_radius=9                        \
-                     popup.background.border_width=2                   \
-                     popup.background.corner_radius=11                 \
+                     popup.background.border_width=1                   \
+                     popup.background.corner_radius=9                 \
                      popup.background.border_color=$POPUP_BORDER_COLOR \
                      popup.background.color=$POPUP_BACKGROUND_COLOR    \
                      popup.background.shadow.drawing=on
@@ -57,10 +57,7 @@ source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Center
-sketchybar -m --add event song_update com.apple.Music.playerInfo \
-              --add item music_info center \
-              --set music_info script="$PLUGIN_DIR/music.sh" \
-              --subscribe music_info song_update
+source "$ITEM_DIR/music.sh"
 
 
 # Right
@@ -68,6 +65,7 @@ source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/ip_address.sh"
 source "$ITEM_DIR/divider.sh"
 source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/cpu.sh"

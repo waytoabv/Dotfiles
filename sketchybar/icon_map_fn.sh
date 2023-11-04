@@ -1,4 +1,3 @@
-
 function icon_map() {
   case "$1" in
   "Figma")
@@ -73,7 +72,7 @@ function icon_map() {
   "GrandTotal" | "Receipts")
     icon_result=":dollar:"
     ;;
-  "Preview" | "预览" | "Skim" | "zathura")
+  "Preview" | "PDF Expert" | "Skim" | "zathura")
     icon_result=":pdf:"
     ;;
   "DingTalk" | "钉钉" | "阿里钉")
