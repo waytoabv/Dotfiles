@@ -1,13 +1,13 @@
 #!/bin/bash
 
 battery=(
-  script="$PLUGIN_DIR/battery.sh"
+  background.corner_radius=12
+  background.padding_left=0
+  background.padding_right=5
   icon.font="$FONT:Regular:19.0"
-  padding_right=10
-  padding_left=0
-  label.drawing=off
   update_freq=120
   updates=on
+  script="$PLUGIN_DIR/battery.sh"
 )
 
 sketchybar --add item battery right      \
