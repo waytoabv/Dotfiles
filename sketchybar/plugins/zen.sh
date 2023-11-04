@@ -13,7 +13,8 @@ zen_on() {
              --set front_app drawing=off \
              --set brew drawing=off \
              --set divider drawing=off \
-             --bar padding_left=18
+             --set battery drawing=off \
+             --bar padding_left=18 
 }
 
 zen_off() {
@@ -29,6 +30,7 @@ zen_off() {
              --set system.yabai drawing=on \
              --set brew drawing=on \
              --set divider drawing=on \
+             --set battery drawing=off \
              --bar padding_left=7
 }
 

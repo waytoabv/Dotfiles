@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 toggle_mute() {
-  sketchybar --set "$NAME" popup.drawing=off
+  sketchybar --set "$NAME" popup.drawing=off 
 
   MUTED=$(osascript -e 'output muted of (get volume settings)')
 
@@ -21,7 +21,7 @@ toggle_devices() {
   COUNTER=0
   CURRENT="$(SwitchAudioSource -t output -c)"
   while IFS= read -r device; do
-    COLOR=$GREY
+    COLOR=$BLACK
     if [ "${device}" = "$CURRENT" ]; then
       COLOR=$WHITE
     fi
