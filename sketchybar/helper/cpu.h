@@ -93,7 +93,7 @@ static inline void cpu_update(struct cpu* cpu) {
     char color[16];
     if (total_perc >= .7) {
       snprintf(color, 16, "%s", getenv("RED"));
-    } else if (total_perc >= .35) {
+    } else if (total_perc >= .4) {
       snprintf(color, 16, "%s", getenv("ORANGE"));
     } else if (total_perc >= .2) {
       snprintf(color, 16, "%s", getenv("YELLOW"));

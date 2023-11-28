@@ -6,6 +6,7 @@ sketchybar --add item        cpu.top right                  \
                              icon.drawing=off               \
                              width=0                        \
                              y_offset=6                     \
+                             label.padding_right=5          \
                                                             \
            --add item        cpu.percent right              \
            --set cpu.percent label.font="$FONT:Heavy:12"    \
@@ -21,6 +22,7 @@ sketchybar --add item        cpu.top right                  \
            --set cpu.sys     width=0                        \
                              graph.color=$RED               \
                              graph.fill_color=$TRANSPARENT  \
+                             y_offset=5                    \
                              label.drawing=off              \
                              icon.drawing=off               \
                              background.padding_right=-7    \
@@ -33,6 +35,7 @@ sketchybar --add item        cpu.top right                  \
            --set cpu.user    graph.color=$BLUE              \
                              label.drawing=off              \
                              icon.drawing=off               \
+                             y_offset=5                    \
                              background.padding_right=-7    \
                              background.padding_left=0      \
                              background.height=30           \

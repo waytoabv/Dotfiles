@@ -29,5 +29,5 @@ if [ ${#MUSIC_LABEL} -ge 70 ]; then
     MUSIC_LABEL+="..."
 fi
 sketchybar -m --set music_info icon="$ICON" \
-                        label="${MUSIC_LABEL}" \
+                        label="${MUSIC_LABEL}" \ 
                         drawing=on

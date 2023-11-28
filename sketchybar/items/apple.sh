@@ -28,4 +28,4 @@ sketchybar --add item           apple.logo left                             \
            --set apple.lock     icon=$LOCK                                  \
                                 label="Lock Screen"                         \
                                 click_script="pmset displaysleepnow;
-                                              $POPUP_OFF"
+                                              $POPUP_OFF" 

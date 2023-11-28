@@ -1,6 +1,7 @@
 #pragma once
 
 #include <mach/mach.h>
+#include <mach/mach_port.h>
 #include <mach/message.h>
 #include <bootstrap.h>
 #include <stdlib.h>
@@ -100,23 +101,10 @@ static inline char* mach_send_message(mach_port_t port, char* message, uint32_t 
     return NULL;
   }
 
-  mach_port_t response_port;
-  mach_port_name_t task = mach_task_self();
-  if (mach_port_allocate(task, MACH_PORT_RIGHT_RECEIVE,
-                               &response_port          ) != KERN_SUCCESS) {
-    return NULL;
-  }
-
-  if (mach_port_insert_right(task, response_port,
-                                   response_port,
-                                   MACH_MSG_TYPE_MAKE_SEND)!= KERN_SUCCESS) {
-    return NULL;
-  }
-
   struct mach_message msg = { 0 };
   msg.header.msgh_remote_port = port;
-  msg.header.msgh_local_port = response_port;
-  msg.header.msgh_id = response_port;
+  msg.header.msgh_local_port = 0;
+  msg.header.msgh_id = 0;
   msg.header.msgh_bits = MACH_MSGH_BITS_SET(MACH_MSG_TYPE_COPY_SEND,
                                             MACH_MSG_TYPE_MAKE_SEND,
                                             0,
@@ -137,12 +125,6 @@ static inline char* mach_send_message(mach_port_t port, char* message, uint32_t 
            MACH_PORT_NULL,
            MACH_MSG_TIMEOUT_NONE,
            MACH_PORT_NULL              );
-
-  struct mach_buffer buffer = { 0 };
-  mach_receive_message(response_port, &buffer, true);
-  if (buffer.message.descriptor.address)
-    return (char*)buffer.message.descriptor.address;
-  mach_msg_destroy(&buffer.message.header);
 
   return NULL;
 }

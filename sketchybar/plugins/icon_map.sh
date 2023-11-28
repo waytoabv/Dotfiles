@@ -8,7 +8,7 @@ case "$1" in
 "Signal")
   icon_result=":signal:"
   ;;
-"Affinity Photo")
+"Affinity Photo" | "Pixelmator Pro")
   icon_result=":affinity_photo:"
   ;;
 "Sublime Text")
@@ -101,7 +101,7 @@ case "$1" in
 "Airmail")
   icon_result=":airmail:"
   ;;
-"Preview" | "预览" | "Skim" | "zathura")
+"Preview" | "预览" | "Skim" | "zathura" | "PDF Expert")
   icon_result=":pdf:"
   ;;
 "zoom.us")
@@ -116,7 +116,10 @@ case "$1" in
 "Safari" | "Safari浏览器" | "Safari Technology Preview")
   icon_result=":safari:"
   ;;
-"Finder" | "Path Finder")
+"Finder" | "ForkLift")
+  icon_result=":finder:"
+  ;;
+  "Path Finder")
   icon_result=":finder:"
   ;;
 "TickTick")
@@ -164,7 +167,7 @@ case "$1" in
 "网易云音乐")
   icon_result=":netease_music:"
   ;;
-"Messages" | "信息" | "Nachrichten")
+"Messages" | "Nachrichten")
   icon_result=":messages:"
   ;;
 "DEVONthink 3")
@@ -197,7 +200,7 @@ case "$1" in
 "Orion" | "Orion RC")
   icon_result=":orion:"
   ;;
-"Systemeinstellungen" | "SystemEinstellungen" | "System.*einstellungen" | "System Einstellungen" | "System einstellungen" | "System (Preferences|Settings)")
+"Systemeinstellungen" | "System (Preferences|Settings)")
   icon_result=":gear:"
   ;;
 "Reminders" | "提醒事项")
@@ -407,7 +410,7 @@ case "$1" in
 "Calibre")
   icon_result=":book:"
   ;;
-*)
+* | "")
   icon_result=":default:"
   ;;
 esac
