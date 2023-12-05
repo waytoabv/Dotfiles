@@ -1,0 +1,46 @@
+# Changing Window Focus
+
+# Modifying the Layout
+
+# rotate layout clockwise
+shift + alt - r : yabai -m space --rotate 270
+
+# flip along y-axis
+shift + alt - y : yabai -m space --mirror y-axis
+
+# flip along x-axis
+shift + alt - x : yabai -m space --mirror x-axis
+
+# toggle window float
+shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+
+# Modify window Size
+
+# maximize a window
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+
+# balance out tree of windows (resize to occupy same area)
+shift + alt - e: yabai -m space --balance
+ 
+# swap windows
+shift + alt - s : yabai -m window --swap south
+shift + alt - a : yabai -m window --swap north
+shift + alt - w : yabai -m window --swap west
+shift + alt - e : yabai -m window --swap east
+
+#move window to prev and next space
+shift + alt - p : yabai -m window --space prev;
+shift + alt - n : yabai -m window --space next;
+shift + alt - l : yabai -m window --space last; yabai -m space --focus last
+
+# Start/Stopping Yabai
+
+# -- start/stop yabai --
+# yabai --restart-service
+
+# e.g. bind to key in skhd:
+shift + alt - 1 : yabai --start-service
+shift + alt - 0 : yabai --stop-service
+shift + alt - 9 : yabai --restart-service
+

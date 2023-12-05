@@ -4,6 +4,7 @@ window_id=$YABAI_WINDOW_ID
 window_data=$(yabai -m query --windows --window "$window_id")
 can_resize=$(echo "$window_data" | jq '.["can-resize"]')
 floating=$(echo "$window_data" | jq '.["is-floating"]')
+finder=$(echo "$window_data" | jq '.["app"]')
 
 if [[ "$can_resize" == "false" ]] && [[ "$floating" == "false" ]]; then
     yabai -m window "$window_id" --toggle float

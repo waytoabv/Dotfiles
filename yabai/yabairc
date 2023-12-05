@@ -4,26 +4,23 @@
 # sudo yabai --load-sa
 
 # Disable specific apps
-yabai -m rule --add label="sys" app="^System.*einstellungen$"   manage=off sticky=on
-yabai -m rule --add app="^Little Snitch$"                       sticky=on
-yabai -m rule --add app="^iTerm$"                               sticky=on
-yabai -m rule --add app="^Bartender 5$" title="^$"              manage=off 		mouse_follows_focus=off
-yabai -m rule --add app="^Stats$" title="^$"      				layer=above 	mouse_follows_focus=off      
+yabai -m rule --add label="sys" app="^System.*einstellungen$"   manage=off
+yabai -m rule --add app="^Little Snitch$" title="^$"            manage=off sticky=on layer=above
+yabai -m rule --add app="^ProtonVPN"					manage=off
 # sticky=on layer=above manage=off
 
 # Arc Browser specific
 yabai -m rule --add app="^Arc$" title="^$" mouse_follows_focus=off
 
 # Automatically float non-resizable windows, such as palettes, system settings etc.
-yabai -m signal --add event=window_created action="~/.config/yabai/float_small_windows.sh" | yabai -m rule --add app="^$" title="^$" mouse_follows_focus=on layer=above
-
+yabai -m signal --add event=window_created action="~/.config/yabai/float_small_windows.sh" 
 #for sketchybar
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
 # Override default layout for last space only (that's the one on the secondary screen)
-yabai -m config --space 4 top_padding 60 bottom_padding 30 left_padding 30 right_padding 30 window_gap 20 split_ratio 0.60
+yabai -m config --space 4 top_padding 65 bottom_padding 30 left_padding 30 right_padding 30 window_gap 20 split_ratio 0.60
   
 
 # Global Settings
@@ -32,7 +29,7 @@ yabai -m config --space 4 top_padding 60 bottom_padding 30 left_padding 30 right
 		auto_balance                 	on            		\
     	split_ratio                  	0.50           		\
     	split_type                   	auto           		\
-    	top_padding                  	50               	\
+    	top_padding                  	35               	\
     	bottom_padding               	10               	\
     	left_padding                 	10               	\
     	right_padding                	10               	\
@@ -45,6 +42,9 @@ yabai -m config --space 4 top_padding 60 bottom_padding 30 left_padding 30 right
 	    mouse_action1                	move               	\
     	mouse_action2                	resize           	\
     	focus_follows_mouse 	        autofocus			\
-		mouse_follows_focus				on        
+		mouse_follows_focus				on        			
 
 echo "yabai configuration loaded.."
+
+
+#		external_bar 					all:50:0
