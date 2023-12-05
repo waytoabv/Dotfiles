@@ -1,4 +1,4 @@
 # Dotfiles
 Sketchybar, Yabai, Iterm, skhd
 
-![SCR-20231104-nirn](https://github.com/waytoabv/Dotfiles/assets/127306391/78f2be53-75a0-4ff7-b528-e0d968eb01db)
+<img width="1680" alt="SCR-20231205-nnoh" src="https://github.com/waytoabv/Dotfiles/assets/127306391/b055f5aa-5fc2-4ad6-a73b-d208b7c50e13">
