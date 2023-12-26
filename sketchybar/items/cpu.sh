@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
 sketchybar --add item        cpu.top right                  \
            --set cpu.top     label.font="$FONT:Bold:7"      \
                              label=CPU                      \

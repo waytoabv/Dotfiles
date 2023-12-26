@@ -1,31 +1,66 @@
 #!/usr/bin/env sh
 
-POPUP_OFF="sketchybar --set apple.logo popup.drawing=off"
-POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+source "$CONFIG_DIR/globalstyles.sh"
 
-sketchybar --add item           apple.logo left                             \
-                                                                            \
-           --set apple.logo     icon=$APPLE                                 \
-                                icon.font="$FONT:Black:16.0"                \
-                                icon.color=$WHITE                           \
-                                background.padding_right=20                 \
-                                label.drawing=off                           \
-                                click_script="$POPUP_CLICK_SCRIPT"          \
-                                                                            \
-           --add item           apple.prefs popup.apple.logo                \
-           --set apple.prefs    icon=$PREFERENCES                           \
-                                label="Preferences"                         \
-                                click_script="open -a 'System Preferences';
-                                              $POPUP_OFF"                   \
-                                                                            \
-           --add item           apple.activity popup.apple.logo             \
-           --set apple.activity icon=$ACTIVITY                              \
-                                label="Activity"                            \
-                                click_script="open -a 'Activity Monitor';
-                                              $POPUP_OFF"\
-                                                                            \
-           --add item           apple.lock popup.apple.logo                 \
-           --set apple.lock     icon=$LOCK                                  \
-                                label="Lock Screen"                         \
-                                click_script="pmset displaysleepnow;
-                                              $POPUP_OFF" 
+POPUP_OFF='sketchybar --set logo popup.drawing=off'
+
+sketchybar                                                                                                                          \
+  --add item logo left                                                                                                              \
+  --set logo "${menu_defaults[@]}"                                                                                                  \
+  icon=󱚝                                                                                                                           \
+  icon.font="$FONT:Black:14.0"                                                                                                      \
+  label.drawing=off                                                                                                  \
+  icon.padding_right=10                                                                                                  \
+  popup.align=left                                                                                                                  \
+  click_script="sketchybar --set logo popup.drawing=toggle"                                                                         \
+  --subscribe logo mouse.exited                                                                                                     \
+                   mouse.exited.global                                                                                              \
+\
+  --add item logo.about popup.logo                                                                                                  \
+  --set logo.about "${menu_item_defaults[@]}"                                                                                       \
+  icon=􀅴                                                                                                                           \
+  label=" Über diesen Mac"                                                                                                            \
+  click_script="open -a 'System Information'; $POPUP_OFF"                                                                           \
+  "${separator[@]}"                                                                                                                 \
+\
+  --add item logo.settings popup.logo                                                                                              \
+  --set logo.settings "${menu_item_defaults[@]}"                                                                                    \
+  icon=􀍟                                                                                                                           \
+  label=" Systemeinstellungen."                                                                                                          \
+  click_script="open -a 'System Settings'; $POPUP_OFF"                                                                              \
+\
+  --add item logo.sleep popup.logo                                                                                                  \
+  --set logo.sleep "${menu_item_defaults[@]}"                                                                                       \
+  label=" Sleep."                                                                                                                     \
+  icon=􀜚                                                                                                                           \
+  click_script="pmset sleepnow;$POPUP_OFF"                                                                                          \
+\
+  --add item logo.restart popup.logo                                                                                                \
+  --set logo.restart "${menu_item_defaults[@]}"                                                                                     \
+  label=" Neustart."                                                                                                                  \
+  icon=􀣨                                                                                                                           \
+  click_script="osascript -e 'tell app \"loginwindow\" to «event aevtrrst»'; $POPUP_OFF"                                            \
+\
+  --add item logo.shut_down popup.logo                                                                                              \
+  --set logo.shut_down "${menu_item_defaults[@]}"                                                                                   \
+  label=" Herunterfahren."                                                                                                                \
+  icon=􀷃                                                                                                                           \
+  click_script="osascript -e 'tell app \"loginwindow\" to «event aevtrsdn»'; $POPUP_OFF"                                            \
+\
+  --add item logo.lock_screen popup.logo                                                                                            \
+  --set logo.lock_screen "${menu_item_defaults[@]}"                                                                                 \
+  label=" Sperrbildschirm."                                                                                                               \
+  icon=􀼑                                                                                                                           \
+  click_script="osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down,control down}'; $POPUP_OFF" \
+  --add item logo.logout popup.logo                                                                                                 \
+  --set logo.logout "${menu_item_defaults[@]}"                                                                                      \
+  label=" ${USER} ausloggen"                                                                                                          \
+  icon=􀉭                                                                                                                           \
+  click_script="osascript -e 'tell app \"System Events\" to log out'; $POPUP_OFF"                                                   \
+  "${separator[@]}"                                                                                                                 \
+\
+  --add item logo.refresh popup.logo                                                                                                \
+  --set logo.refresh "${menu_item_defaults[@]}"                                                                                     \
+  icon=􀅈                                                                                                                           \
+  label=" Sketchybar Neustart."                                                                                                        \
+  click_script="$POPUP_OFF; sketchybar --update"

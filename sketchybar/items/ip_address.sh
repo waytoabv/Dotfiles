@@ -1,3 +1,7 @@
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
+
 sketchybar --add item  ip_address right                              \
            --set       ip_address script="$PLUGIN_DIR/ip_address.sh" \
                                   update_freq=30                     \

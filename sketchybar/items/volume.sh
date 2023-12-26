@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
 volume_slider=(
   script="$PLUGIN_DIR/volume.sh"
   updates=on
@@ -16,21 +19,18 @@ volume_slider=(
 volume_icon=(
   click_script="$PLUGIN_DIR/volume_click.sh"
   padding_left=5
-  icon=$VOLUME_100
+  icon=$ICON
   icon.width=0
   icon.align=left
   icon.color=$GREY
   icon.font="$FONT:Regular:14.0"
-  label.width=25
+  background.padding_left=7
+  label.width=30
   label.align=left
   label.font="$FONT:Regular:14.0"
 )
 
-status_bracket=(
-  background.color=$BAR_COLOR
-  background.border_color=$BAR_COLOR
-  blur_radius=5
-)
+
 
 sketchybar --add slider volume right            \
            --set volume "${volume_slider[@]}"   \
@@ -39,6 +39,3 @@ sketchybar --add slider volume right            \
                                                 \
            --add item volume_icon right         \
            --set volume_icon "${volume_icon[@]}"
-
-sketchybar --add bracket status battery wifi volume_icon \
-           --set status "${status_bracket[@]}" \

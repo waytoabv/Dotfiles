@@ -1,24 +1,24 @@
 #!/usr/bin/env sh
 
-sketchybar --add item     calendar right                    \
-           --set calendar icon=cal                          \
-                          icon.font="$FONT:Black:12.0"      \
-                          background.padding_right=7        \
-                          label.width=65                    \
-                          label.align=right                 \
-                          background.padding_left=7         \
-                          update_freq=1                     \
-                          script="$PLUGIN_DIR/calendar.sh"  \
-                          click_script="$PLUGIN_DIR/zen.sh"
-time_bracket=(
-  background.color=$BACKGROUND_1
-  background.border_color=$BACKGROUND_2
-  blur_radius=5
-)
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
 
-sketchybar --add bracket time calendar  \
-           --set time "${time_bracket[@]}" \
-           --add item spacer right                \
-           --set spacer background.drawing=off    \
-                 width=5                          \    
-                      
+sketchybar -m --add item  date right                    \
+           --set date "${date[@]}"                         \
+                          icon.font="$FONT:Black:11"      \
+                          icon.y_offset=5                   \
+                          icon.padding_right=$PADDINGS      \
+                          icon.padding_left=$PADDINGS      \
+                          width=0                            \
+                          update_freq=30                     \
+                          script="$PLUGIN_DIR/date.sh"      \
+           --add item  time right                         \
+           --set time "${time[@]}"                         \
+                          label.font="$FONT:Semibold:11.5"      \
+                          label.y_offset=-5                 \
+                          label.width=70                    \
+                          label.align=center                 \
+                          update_freq=1                     \
+                          script="$PLUGIN_DIR/time.sh"    \
+                          click_script="open -a BusyCal.app" \
+                          

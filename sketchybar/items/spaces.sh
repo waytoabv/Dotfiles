@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
 SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
 
 # Destroy space on right click, focus space on left click.
@@ -24,8 +27,11 @@ do
     label.highlight_color=$WHITE
     label.font="sketchybar-app-font:Regular:16.0"
     label.y_offset=-1
-    background.color=$BAR_COLOR
     background.border_color=$GREY
+    background.height=23
+    background.color=$BAR_COLOR
+    blur_radius=5
+    background.corner_radius=9
     blur_radius=10
     script="$PLUGIN_DIR/space.sh"
   )
@@ -40,7 +46,7 @@ space_creator=(
   icon.font="$FONT:Heavy:16.0"
   padding_left=5
   padding_right=5
-  label.drawing=off
+  label.drawing=on
   display=active
   click_script='yabai -m space --create'
   script="$PLUGIN_DIR/space_windows.sh"
@@ -50,4 +56,3 @@ space_creator=(
 sketchybar --add item space_creator left               \
            --set space_creator "${space_creator[@]}"   \
            --subscribe space_creator space_windows_change
-

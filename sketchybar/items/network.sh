@@ -3,6 +3,7 @@
 # Trigger the brew_udpate event when brew update or upgrade is run from cmdline
 # e.g. via function in .zshrc
 
+
 sketchybar -m --add item network_up right \
               --set network_up label.font="$FONT:Bold:10.0" \
                                icon.font="$FONT:Bold:10.0" \

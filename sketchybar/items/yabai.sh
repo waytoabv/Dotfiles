@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
 yabai=(
   icon.width=0
   label.width=0

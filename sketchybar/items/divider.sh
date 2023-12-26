@@ -1,9 +1,9 @@
-sketchybar --add bracket status brew github.bell volume volume_alias \
-           --set status background.color=$BACKGROUND_1
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh" 
 
 sketchybar --add item divider right \
-           --set divider label.drawing=off \
+           --set divider label.drawing=on \
                          icon=􀫰 \
-                         icon.font="$FONT:BLACK:20.0" \
+                         icon.font="$FONT:Heavy:18.0" \
                          background.padding_left=5 \
-                         background.padding_right=-10
+                         background.padding_right=-14
