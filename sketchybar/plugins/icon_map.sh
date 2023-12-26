@@ -128,7 +128,7 @@ case "$1" in
 "Mattermost")
   icon_result=":mattermost:"
   ;;
-"Calendars" | "日历" | "Fantastical" | "Cron" | "Amie")
+"Calendars" | "日历" | "Fantastical" | "BusyCal" | "Amie")
   icon_result=":calendar:"
   ;;
 "Todoist")
