@@ -1,13 +1,20 @@
  #!/usr/bin/env sh
 
+ # Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
 source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 
 ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-PADDINGS=2 # All paddings use this value (icon, label, background)
+
+POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+POPUP_OFF="sketchybar --set \$NAME popup.drawing=off"
+
+sketchybar --bar "${bar[@]}" --default "${item_defaults[@]}"
+
 
 # Setting up and starting the helper process
 HELPER=git.felix.helper
@@ -18,37 +25,6 @@ $HOME/.config/sketchybar/helper/helper $HELPER > /dev/null 2>&1 &
 # Unload the macOS on screen indicator overlay for volume change
 # launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
 
-# Setting up the general bar appearance and default values
-sketchybar --bar     height=30                                         \
-                     color=$Transparent                                  \
-                     shadow=off                                        \
-                     position=top                                      \
-                     padding_right=10                                  \
-                     padding_left=10                                   \
-                     corner_radius=9                                   \
-                     y_offset=2                                        \
-                     margin=10                                         \
-                     blur_radius=5                                    \
-                     notch_width=0                                     \
-                                                                       \
-           --default updates=when_shown                                \
-                     icon.font="$FONT:Bold:14.0"                       \
-                     icon.color=$ICON_COLOR                            \
-                     icon.padding_left=$PADDINGS                       \
-                     icon.padding_right=$PADDINGS                      \
-                     label.font="$FONT:Semibold:13.0"                  \
-                     label.color=$LABEL_COLOR                          \
-                     label.padding_left=$PADDINGS                      \
-                     label.padding_right=$PADDINGS                     \
-                     background.padding_right=$PADDINGS                \
-                     background.padding_left=$PADDINGS                 \
-                     background.height=23                              \
-                     background.corner_radius=9                        \
-                     popup.background.border_width=1                   \
-                     popup.background.corner_radius=3                 \
-                     popup.background.border_color=$POPUP_BORDER_COLOR \
-                     popup.background.color=$POPUP_BACKGROUND_COLOR    \
-                     popup.background.shadow.drawing=on
 
 # Left
 source "$ITEM_DIR/apple.sh"
@@ -62,6 +38,7 @@ source "$ITEM_DIR/music.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/spacer.sh" right
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/volume.sh"
@@ -69,6 +46,19 @@ source "$ITEM_DIR/vpn.sh"
 source "$ITEM_DIR/divider.sh"
 source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/cpu.sh"
+
+
+# Brackets
+sketchybar \
+--add bracket status_icons volume_icon volume_slider wifi battery \
+    --set status_icons "${bracket_defaults[@]}" \
+\
+--add bracket date_icons date time \
+    --set date_icons "${bracket_defaults[@]}" \
+\
+--add bracket space_icons front_app \
+    --set space_icons "${bracket_defaults[@]}" 
+
 
 sketchybar --hotload on
 
