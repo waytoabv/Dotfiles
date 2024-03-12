@@ -1,23 +1,12 @@
 #!/bin/sh
 
+
 # Load global styles, colors and icons
 source "$CONFIG_DIR/globalstyles.sh"
 
-music_item_defaults=(
-  align=center
-  width=240
-  label.max_chars=32
-)
+#music_event=defaults read com.apple.Music.playerInfo
+#sketchybar --add event media_change $music_event
 
-music_cover=(
-  background.image=media.artwork
-  background.image.scale=7
-  background.image.corner_radius=5
-  background.image.padding_left=8
-  background.image.padding_right=8
-  y_offset=-$PADDINGS
-  align=center
-)
 
 music_artist=(
   "${music_item_defaults[@]}"
@@ -36,39 +25,25 @@ render_bar_item() {
   sketchybar --set $NAME label="$CURRENT_ARTIST - $CURRENT_SONG"
 }
 
-render_popup() {
-  sketchybar --set $NAME.cover "${music_cover[@]}"   \
-             --set $NAME.artist "${music_artist[@]}" \
-             --set $NAME.title "${music_title[@]}"   \
-             --set $NAME.album "${music_album[@]}"
-}
-
 update() {
-  CURRENT_ARTIST="$(echo "$INFO" | jq -r '.artist')"
-  CURRENT_SONG="$(echo "$INFO" | jq -r '.title')"
-  CURRENT_ALBUM="$(echo "$INFO" | jq -r '.album')"
+  APP_STATE="$(echo "$INFO" | jq -r '.app')"
   PLAYER_STATE="$(echo "$INFO" | jq -r '.state')"
+  if [ "$APP_STATE" = "Musik" ]; then
+      if [ "$PLAYER_STATE" = "playing" ]; then
+        CURRENT_ARTIST=$(osascript -e 'tell application "Music" to get artist of current track')
+        CURRENT_SONG=$(osascript -e 'tell application "Music" to get name of current track')
+        CURRENT_ALBUM=$(osascript -e 'tell application "Music" to get album of current track')
 
-  if [ "$PLAYER_STATE" = "playing" ]; then
-    sketchybar --set $NAME drawing=on                      \
-                           icon=􀊆                          \
-                           icon.padding_right=5   \
-               --set $NAME.artist label="$CURRENT_ARTIST"  \
-               --set $NAME.title label="$CURRENT_SONG"     \
-               --set $NAME.album label="$CURRENT_ALBUM"
-    render_bar_item
-    render_popup
-
+        sketchybar --set $NAME  drawing=on                      \
+                                icon=􀊆                          
+        render_bar_item
+      elif [ "$PLAYER_STATE" = "paused" ]; then
+        sketchybar --set $NAME icon=􀊄 \
+                               drawing=on
+      fi
   else
-    sketchybar --set $NAME icon=􀊄
-    popup off
-    sketchybar --set $NAME drawing=off
+  sketchybar --set $NAME drawing=off
   fi
-  
-}
-
-popup() {
-  sketchybar --set "$NAME" popup.drawing="$1"
 }
 
 playpause() {
@@ -79,12 +54,6 @@ playpause() {
 case "$SENDER" in
 "routine" | "forced" | "media_change")
   update
-  ;;
-"mouse.entered")
-  popup on
-  ;;
-"mouse.exited" | "mouse.exited.global")
-  popup off
   ;;
 "mouse.clicked")
   playpause

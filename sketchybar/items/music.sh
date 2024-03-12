@@ -6,31 +6,26 @@ source "$CONFIG_DIR/globalstyles.sh"
 music=(
   "${bracket_defaults[@]}"
   script="$PLUGIN_DIR/music.sh"
-  popup.align=center
   padding_left=0
-  padding_right=$PADDINGS
+  icon.padding_right=5
   icon=􀊆
   drawing=off
-  label="Loading…"
+  label=…
   background.image=media.artwork
-  background.image.scale=0.76
-  background.image.corner_radius=9
-  label.padding_right=4
+  background.image.padding_left=3
+  background.image.scale=0.7
+  background.image.corner_radius=5
   icon.padding_left=32
-  label.max_chars=40
-  updates=on
-  --subscribe music media_change
-  --subscribe music mouse.entered
-                    mouse.clicked
-                    mouse.exited
-                    mouse.exited.global
+  label.max_chars=65
+  label.width=dynamic
+  label.padding_right=7
+  background.padding_right=4
+  updates=on       
 )
 
-sketchybar                                                                            \
-  --add item music center                                                              \
-  --set      music "${music[@]}"                                                      \
-  --set      music "${menu_defaults[@]}"                                              \
-  --add item music.cover popup.music                                                  \
-  --add item music.artist popup.music                                                 \
-  --add item music.title popup.music                                                  \
-  --add item music.album popup.music
+sketchybar                               \
+  --add item music right                 \
+  --set      music "${music[@]}"         \
+                   "${menu_defaults[@]}" \
+  --subscribe music media_change         \
+                    mouse.clicked

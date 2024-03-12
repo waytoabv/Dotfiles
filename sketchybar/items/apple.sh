@@ -7,14 +7,14 @@ POPUP_OFF='sketchybar --set logo popup.drawing=off'
 sketchybar                                                                                                                          \
   --add item logo left                                                                                                              \
   --set logo "${menu_defaults[@]}"                                                                                                  \
-  icon=󱚝                                                                                                                           \
-  icon.font="$FONT:Black:14.0"                                                                                                      \
-  label.drawing=off                                                                                                  \
-  icon.padding_right=10                                                                                                  \
-  popup.align=left                                                                                                                  \
-  click_script="sketchybar --set logo popup.drawing=toggle"                                                                         \
-  --subscribe logo mouse.exited                                                                                                     \
-                   mouse.exited.global                                                                                              \
+              icon=󱚝                        \                                                                                                    \
+              icon.font="$FONT:Black:14.0"  \                                                                                                    \
+              label.drawing=off             \
+              icon.padding_right=5         \
+              popup.align=left              \
+              click_script="sketchybar --set logo popup.drawing=toggle"   \                                                                      \
+  --subscribe logo mouse.exited                                           \                                                         \
+                   mouse.exited.global                                    \
 \
   --add item logo.about popup.logo                                                                                                  \
   --set logo.about "${menu_item_defaults[@]}"                                                                                       \

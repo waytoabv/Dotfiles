@@ -1,32 +1,93 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/icons.sh"
 source "$CONFIG_DIR/colors.sh"
+TMP="/tmp/drawing_state.txt"
 
-BATTERY_INFO="$(pmset -g batt)"
-PERCENTAGE=$(echo "$BATTERY_INFO" | grep -Eo "\d+%" | cut -d% -f1)
-CHARGING=$(echo "$BATTERY_INFO" | grep 'AC Power')
+render_item() {
 
-if [ $PERCENTAGE = "" ]; then
-  exit 0
-fi
+  PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
+  CHARGING=$(pmset -g batt | grep 'AC Power')
+  CHARGING_LABEL="Not charging"
+  COLOR=$ICON_COLOR
+  local DRAWING=$(get_label_state)
 
-COLOR=$GV_WHITE
-case ${PERCENTAGE} in
-  9[0-9]|100) ICON=$BATTERY_100; COLOR=$CHARGER_CONNECTED
+  if [ $PERCENTAGE = "" ]; then
+    exit 0
+  fi
+
+  case ${PERCENTAGE} in
+  9[0-9] | 100)
+    ICON="􀛨"
+    ;;
+  [6-8][0-9])
+    ICON="􀺸"
+    ;;
+  [3-5][0-9])
+    ICON="􀺶"
+    ;;
+  [1-2][0-9])
+    ICON="􀛩"
+    COLOR=$(getcolor yellow)
+    DRAWING="on"
+    ;;
+  *)
+    ICON="􀛪"
+    COLOR=$(getcolor red)
+    DRAWING="on"
+    ;;
+  esac
+
+  if [[ $CHARGING != "" ]]; then
+    ICON="􀢋"
+    CHARGING_LABEL="Charging"
+  fi
+
+  sketchybar --set $NAME icon=$ICON icon.color=$COLOR label=$PERCENTAGE% label.color=$LABEL_COLOR label.drawing=$DRAWING
+}
+
+render_popup() {
+  sketchybar --set $NAME.details label="$PERCENTAGE% (${CHARGING_LABEL})"
+}
+
+save_label_state() {
+  echo "$(sketchybar --query $NAME | jq -r '.label.drawing')" > $TMP
+}
+
+get_label_state() {
+  cat "$TMP"
+}
+
+label_toggle() {
+  if [[ $(get_label_state) == "on" ]]; then
+    DRAWING="off"
+  else
+    DRAWING="on"
+  fi
+  
+  sketchybar --set $NAME label.drawing=$DRAWING
+  save_label_state
+}
+
+update() {
+  render_item
+  render_popup
+}
+
+popup() {
+  sketchybar --set "$NAME" popup.drawing="$1"
+}
+
+case "$SENDER" in
+"mouse.clicked")
+  label_toggle
   ;;
-  [6-8][0-9]) ICON=$BATTERY_75;
+"routine" | "forced" | "power_source_change")
+  update
   ;;
-  [3-5][0-9]) ICON=$BATTERY_50; COLOR=$BATTERY_MEDIUM
+"mouse.entered")
+  popup on
   ;;
-  [1-2][0-9]) ICON=$BATTERY_25; COLOR=$BATTERY_LOW
+"mouse.exited" | "mouse.exited.global")
+  popup off
   ;;
-  *) ICON=$BATTERY_0; COLOR=$BATTERY_SUPERLOW
 esac
-
-if [[ $CHARGING != "" ]]; then
-  ICON=$BATTERY_CHARGING
-  COLOR=$CHARGER_CONNECTED
-fi
-
-sketchybar --set $NAME  icon="$ICON" icon.color=$WHITE label="$PERCENTAGE%" label.color=$WHITE

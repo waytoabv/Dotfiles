@@ -2,4 +2,4 @@
 
 sketchybar \
   --add item spacer $1 \
-  --set spacer width=$PADDINGS \
+  --set spacer width=4 \

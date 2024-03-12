@@ -16,6 +16,6 @@ wifi=(
 sketchybar --add item wifi right \
            --set wifi "${wifi[@]}" \
            --subscribe wifi wifi_change mouse.clicked
-           
 
-sketchybar --set $NAME label=$COUNT icon.color=$COLOR
+
+

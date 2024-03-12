@@ -3,7 +3,7 @@
 # Load global styles, colors and icons
 source "$CONFIG_DIR/globalstyles.sh"
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
+SPACE_ICONS=("Web" "Code" "Todo" "4" "5" "6" "7" "8" "9" "10" "11" "12")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
@@ -21,18 +21,18 @@ do
     icon.padding_right=10
     padding_left=2
     padding_right=2
-    label.padding_right=20
-    icon.highlight_color=$RED
+    label.padding_right=16
+    icon.highlight_color=$WHITE
     label.color=$GREY
-    label.highlight_color=$WHITE
+    label.highlight_color=$BLUE
     label.font="sketchybar-app-font:Regular:16.0"
     label.y_offset=-1
-    background.border_color=$GREY
-    background.height=23
-    background.color=$BAR_COLOR
+    background.border_color=$BG0
+    background.border_width=1
+    background.height=25
+    background.color=$TRY
     blur_radius=5
-    background.corner_radius=9
-    blur_radius=10
+    background.corner_radius=6
     script="$PLUGIN_DIR/space.sh"
   )
 
@@ -50,7 +50,7 @@ space_creator=(
   display=active
   click_script='yabai -m space --create'
   script="$PLUGIN_DIR/space_windows.sh"
-  icon.color=$WHITE
+  icon.color=$GREY
 )
 
 sketchybar --add item space_creator left               \

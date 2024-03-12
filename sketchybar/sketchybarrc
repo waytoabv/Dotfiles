@@ -33,32 +33,38 @@ source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Center
-source "$ITEM_DIR/music.sh"
 
+source "$ITEM_DIR/diskmonitor.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/ram.sh"
+# source "$ITEM_DIR/snitch.sh"
+source "$ITEM_DIR/network.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/spacer.sh" right
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/vpn.sh"
-source "$ITEM_DIR/divider.sh"
-source "$ITEM_DIR/network.sh"
-source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/volumealias.sh"
+# source "$ITEM_DIR/things3.sh"
+source "$ITEM_DIR/music.sh"
 
 
 # Brackets
 sketchybar \
---add bracket status_icons volume_icon volume_slider wifi battery \
+--add bracket status_icons  volume_alias wifi battery \
     --set status_icons "${bracket_defaults[@]}" \
 \
 --add bracket date_icons date time \
     --set date_icons "${bracket_defaults[@]}" \
 \
+--add bracket process_icons cpu.top cpu.percent cpu.sys cpu.user ram swap network_up network_down diskmonitor diskmonitor.label diskmonitor.value \
+    --set process_icons "${bracket_defaults[@]}" \
+\
 --add bracket space_icons front_app \
-    --set space_icons "${bracket_defaults[@]}" 
-
+    --set space_icons "${bracket_defaults[@]}" \
+\
 
 sketchybar --hotload on
 

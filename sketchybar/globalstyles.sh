@@ -11,16 +11,16 @@ FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 
 # Bar Appearance
 bar=(
-  height=30                                         
-  color=$Transparent                                  
+  height=26                                         
+  color=$TRANSPARENT                    
   shadow=off                                        
   position=top                                      
-  padding_right=10                                  
+  padding_right=5                                  
   padding_left=10                                   
   corner_radius=9                                   
-  y_offset=2                                        
+  y_offset=3                                        
   margin=10                                         
-  blur_radius=5                                    
+  blur_radius=10                                    
   notch_width=0
 )
 
@@ -53,20 +53,22 @@ icon_defaults=(
 
 bracket_defaults=(
   background.height=25
-  background.color=$BAR_COLOR
+  background.color=$TRY
+  background.border_color=$LIGHT_BLACK
+  background.border_width=1
   blur_radius=5
-  background.corner_radius=9
+  background.corner_radius=6
   background.padding_left=7
   background.padding_right=7
 )
 
 menu_defaults=(
   popup.blur_radius=15
-  popup.background.color=$BAR_COLOR
-  popup.background.corner_radius=3
+  popup.background.color=$LIGHT_GREY
+  popup.background.corner_radius=9
   popup.background.shadow.drawing=on
   popup.background.border_width=1
-  popup.background.border_color=$BG2
+  popup.background.border_color=$BG1
 )
 
 menu_item_defaults=(
