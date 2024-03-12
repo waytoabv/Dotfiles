@@ -1,0 +1,22 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/lukas/.config/sketchybar/helper/helper'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _handler, symObjAddr: 0x0, symBinAddr: 0x100002E14, symSize: 0xF0 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _g_cpu, symBinAddr: 0x100008028, symSize: 0x0 }
+  - { offsetInCU: 0x149, offset: 0x149, size: 0x8, addend: 0x0, symName: _TOPPROC, symObjAddr: 0x1051, symBinAddr: 0x100003E20, symSize: 0x0 }
+  - { offsetInCU: 0x16F, offset: 0x16F, size: 0x8, addend: 0x0, symName: _FILTER_PATTERN, symObjAddr: 0x1071, symBinAddr: 0x100003E40, symSize: 0x0 }
+  - { offsetInCU: 0x190, offset: 0x190, size: 0x8, addend: 0x0, symName: _g_mach_port, symObjAddr: 0x3BD8, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x1A5, offset: 0x1A5, size: 0x8, addend: 0x0, symName: _g_mach_server, symObjAddr: 0x3BE0, symBinAddr: 0x100008008, symSize: 0x0 }
+  - { offsetInCU: 0x2E6, offset: 0x2E6, size: 0x8, addend: 0x0, symName: _handler, symObjAddr: 0x0, symBinAddr: 0x100002E14, symSize: 0xF0 }
+  - { offsetInCU: 0x342, offset: 0x342, size: 0x8, addend: 0x0, symName: _env_get_value_for_key, symObjAddr: 0xF0, symBinAddr: 0x100002F04, symSize: 0x12C }
+  - { offsetInCU: 0x386, offset: 0x386, size: 0x8, addend: 0x0, symName: _cpu_update, symObjAddr: 0x21C, symBinAddr: 0x100003030, symSize: 0x4E0 }
+  - { offsetInCU: 0x491, offset: 0x491, size: 0x8, addend: 0x0, symName: _sketchybar, symObjAddr: 0x6FC, symBinAddr: 0x100003510, symSize: 0x2D4 }
+  - { offsetInCU: 0x529, offset: 0x529, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x9D0, symBinAddr: 0x1000037E4, symSize: 0x70 }
+  - { offsetInCU: 0x55F, offset: 0x55F, size: 0x8, addend: 0x0, symName: _cpu_init, symObjAddr: 0xA40, symBinAddr: 0x100003854, symSize: 0x5C }
+  - { offsetInCU: 0x583, offset: 0x583, size: 0x8, addend: 0x0, symName: _event_server_begin, symObjAddr: 0xA9C, symBinAddr: 0x1000038B0, symSize: 0x34 }
+  - { offsetInCU: 0x5B5, offset: 0x5B5, size: 0x8, addend: 0x0, symName: _mach_send_message, symObjAddr: 0xAD0, symBinAddr: 0x1000038E4, symSize: 0xFC }
+  - { offsetInCU: 0x607, offset: 0x607, size: 0x8, addend: 0x0, symName: _mach_get_bs_port, symObjAddr: 0xBCC, symBinAddr: 0x1000039E0, symSize: 0x8C }
+  - { offsetInCU: 0x64B, offset: 0x64B, size: 0x8, addend: 0x0, symName: _mach_server_begin, symObjAddr: 0xC58, symBinAddr: 0x100003A6C, symSize: 0x1B4 }
+  - { offsetInCU: 0x69D, offset: 0x69D, size: 0x8, addend: 0x0, symName: _mach_receive_message, symObjAddr: 0xE0C, symBinAddr: 0x100003C20, symSize: 0xD8 }
+...
