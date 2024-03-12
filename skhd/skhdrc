@@ -1,71 +1,66 @@
 ## Navigation (lalt - ...)
 
-# Window Navigation (through display borders): lalt - {j, k, l, ö}
-lalt - j    : yabai -m window --focus west  || yabai -m display --focus west
-lalt - k    : yabai -m window --focus south || yabai -m display --focus south
-lalt - l    : yabai -m window --focus north || yabai -m display --focus north
-lalt - 0x29 : yabai -m window --focus east  || yabai -m display --focus east
-
 # Extended Window Navigation: lalt - {h, ä}
-lalt -    h : yabai -m window --focus first
-lalt - 0x27 : yabai -m window --focus  last
+hyper -    h : yabai -m window --focus first
+hyper - 0x27 : yabai -m window --focus  last
 
 # Float / Unfloat window: lalt - space
 lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
 
 # Make window zoom to fullscreen: shift + lalt - f
-shift + lalt - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
-
-# Make window zoom to parent node: lalt - f 
-lalt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+hyper - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
 
 ## Window Movement (shift + lalt - ...)
 # Moving windows in spaces: shift + lalt - {j, k, l, ö}
-shift + lalt - j : yabai -m window --warp west || $(yabai -m window --display west && yabai -m display --focus west && yabai -m window --warp last) || yabai -m window --move rel:-10:0
-shift + lalt - k : yabai -m window --warp south || $(yabai -m window --display south && yabai -m display --focus south) || yabai -m window --move rel:0:10
-shift + lalt - l : yabai -m window --warp north || $(yabai -m window --display north && yabai -m display --focus north) || yabai -m window --move rel:0:-10
-shift + lalt - 0x29 : yabai -m window --warp east || $(yabai -m window --display east && yabai -m display --focus east && yabai -m window --warp first) || yabai -m window --move rel:10:0
+hyper - j : yabai -m window --warp west || $(yabai -m window --display west && yabai -m display --focus west && yabai -m window --warp last) || yabai -m window --move rel:-10:0
+hyper - k : yabai -m window --warp south || $(yabai -m window --display south && yabai -m display --focus south) || yabai -m window --move rel:0:10
+hyper - l : yabai -m window --warp north || $(yabai -m window --display north && yabai -m display --focus north) || yabai -m window --move rel:0:-10
+hyper - 0x29 : yabai -m window --warp east || $(yabai -m window --display east && yabai -m display --focus east && yabai -m window --warp first) || yabai -m window --move rel:10:0
 
 # Toggle split orientation of the selected windows node: shift + lalt - s
-shift + lalt - s : yabai -m window --toggle split
+hyper - s : yabai -m window --toggle split
 
 # Moving windows between spaces: shift + lalt - {1, 2, 3, 4, p, n } (Assumes 4 Spaces Max per Display)
-shift + lalt - 1 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[1] ]] \
+hyper - 1 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[1] ]] \
                   && yabai -m window --space $SPACES[1]
 
-shift + lalt - 2 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[2] ]] \
+hyper - 2 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[2] ]] \
                   && yabai -m window --space $SPACES[2]
 
-shift + lalt - 3 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[3] ]] \
+hyper - 3 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[3] ]] \
                   && yabai -m window --space $SPACES[3]
 
-shift + lalt - 4 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[4] ]] \
+hyper - 4 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[4] ]] \
                   && yabai -m window --space $SPACES[4]
 
-shift + lalt - p : yabai -m window --space prev && yabai -m space --focus prev
-shift + lalt - n : yabai -m window --space next && yabai -m space --focus next
+hyper - p : yabai -m window --space prev && yabai -m space --focus prev
+hyper - n : yabai -m window --space next && yabai -m space --focus next
 
 # Mirror Space on X and Y Axis: shift + lalt - {x, y}
-shift + lalt - x : yabai -m space --mirror x-axis
-shift + lalt - y : yabai -m space --mirror y-axis
-
-## Resize (shift + lalt - ...)
-# Resize windows: ctrl + lalt - {j, k, l, ö}
-shift + lalt - j    : yabai -m window --resize right:-100:0 || yabai -m window --resize left:-100:0
-shift + lalt - k    : yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:100
-shift + lalt - l    : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-shift + lalt - 0x29 : yabai -m window --resize right:100:0 || yabai -m window --resize left:100:0
+hyper - x : yabai -m space --mirror x-axis
+hyper - y : yabai -m space --mirror y-axis
 
 # Equalize size of windows: ctrl + lalt - e
-shift + lalt - e : yabai -m space --balance
+hyper - e : yabai -m space --balance
 
 # Enable / Disable gaps in current workspace: ctrl + lalt - g
-shift + lalt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
-# New window in hor./ vert. splits for all applications with yabai
-lalt - s : yabai -m window --insert east;  skhd -k "cmd - n"
-lalt - v : yabai -m window --insert south; skhd -k "cmd - n"
 
 # Toggle sketchybar
-shift + lalt - space : sketchybar --bar hidden=toggle 
-shift + lalt - r : sketchybar --remove '/.*/' && sh -c 'export CONFIG_DIR=$HOME/.config/sketchybar && $CONFIG_DIR/sketchybarrc'
+hyper - space : sketchybar --bar hidden=toggle 
+hyper - r : sketchybar --remove '/.*/' && sh -c 'export CONFIG_DIR=$HOME/.config/sketchybar && $CONFIG_DIR/sketchybarrc'
+
+#Start/Stopping Yabai
+#e.g. bind to key in skhd:
+hyper - 1 : yabai --start-service
+hyper - 0 : yabai --stop-service
+hyper - 9 : yabai --restart-service
+
+#lunar shortcuts
+#toogle night mode: shift + lalt + ß
+hyper - m : "${HOME}"/.config/scripts/lunar.sh
+
+
+#new finder window
+lalt + cmd - n: open -a "New Finder Window.app"
