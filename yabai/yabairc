@@ -22,7 +22,7 @@ yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m q
 	yabai -m config                                  	    \
     	layout                       	bsp         	    \
 		auto_balance                 	off					\
-    	top_padding                  	34               	\
+    	top_padding                  	28               	\
     	bottom_padding               	6               	\
     	left_padding                 	6               	\
     	right_padding                	6               	\
