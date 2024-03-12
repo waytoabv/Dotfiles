@@ -1,50 +1,100 @@
-# for this to work you must configure sudo such that
-# it will be able to run the command without password
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-# sudo yabai --load-sa
+# Unload the macOS WindowManager process
+launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist >/dev/null 2>&1 &
 
-# Disable specific apps
-yabai -m rule --add label="sys" app="^System.*einstellungen$"   manage=off
-yabai -m rule --add app="^Little Snitch$" title="^$"            manage=off sticky=on layer=above
-yabai -m rule --add app="^ProtonVPN"					manage=off
-# sticky=on layer=above manage=off
+# float small windows
+yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
 
-# Arc Browser specific
-yabai -m rule --add app="^Arc$" title="^$" mouse_follows_focus=off
-
-# Automatically float non-resizable windows, such as palettes, system settings etc.
-yabai -m signal --add event=window_created action="~/.config/yabai/float_small_windows.sh" 
 #for sketchybar
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
 # Override default layout for last space only (that's the one on the secondary screen)
-yabai -m config --space 4 top_padding 65 bottom_padding 30 left_padding 30 right_padding 30 window_gap 20 split_ratio 0.60
+yabai -m config --space 4 top_padding 55 bottom_padding 30 left_padding 30 right_padding 30 window_gap 20 split_ratio 0.60
+
+#unfreeze dock
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
+
   
 
 # Global Settings
 	yabai -m config                                  	    \
     	layout                       	bsp         	    \
-		auto_balance                 	on            		\
-    	split_ratio                  	0.50           		\
-    	split_type                   	auto           		\
-    	top_padding                  	35               	\
-    	bottom_padding               	10               	\
-    	left_padding                 	10               	\
-    	right_padding                	10               	\
-    	window_gap                   	8               	\
-    	window_origin_display           cursor	         	\
-    	window_placement                second_child        \
-		window_zoom_persist         	on		            \
-    	mouse_modifier               	fn		            \
+		auto_balance                 	off					\
+    	top_padding                  	34               	\
+    	bottom_padding               	6               	\
+    	left_padding                 	6               	\
+    	right_padding                	6               	\
+    	window_gap                   	6               	\
 	    mouse_drop_action 	            swap		        \
-	    mouse_action1                	move               	\
-    	mouse_action2                	resize           	\
     	focus_follows_mouse 	        autofocus			\
-		mouse_follows_focus				on        			
+		mouse_follows_focus				off        			\
+		menubar_opacity					0.9					\
+
+
+
+
+# Setup spaces
+function setup_space {
+  local idx="$1"
+  local name="$2"
+  local space=
+  echo "setup space $idx : $name"
+
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+
+  yabai -m space "$idx" --label "$name"
+  echo yabai -m space "$idx" --label "$name"
+}
+
+setup_space 1 Web
+setup_space 2 Code
+setup_space 3 Todo
+
+# Assign apps to specific spaces
+yabai -m rule --add app="^(Arc|Safari)$" space=^1
+yabai -m rule --add app="^(Code)$" space=^2
+yabai -m rule --add app="^(Spark|Things|Notizen|Anytype|BusyCal)$" space=^3
+
+
+# Disable specific apps
+yabai -m rule --add label="sys" app="^System.*einstellungen$"   					manage=off
+yabai -m rule --add app="^iTerm"													manage=off mouse_follows_focus=on
+yabai -m rule --add app="^Lunar$" title="^Settings"									manage=off
+yabai -m rule --add app="^BusyCal$" title!="^$"										manage=off
+yabai -m rule --add app="^Spark$" title!="^Spark - INBOX$"							manage=off
+yabai -m rule --add app="^Shottr$" title="^Preferences$"							manage=off
+yabai -m rule --add app="^Arc$" title="^Lukas$"				  						manage=off
+yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					manage=off
+yabai -m rule --add app="^Tot$"	title="^Tot$"										manage=off mouse_follows_focus=on
+yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					manage=off
+yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		manage=off
+yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
+yabai -m rule --add app="^(Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store)$" manage=off mouse_follows_focus=on
+
 
 echo "yabai configuration loaded.."
 
 
+
+
+# OLD:
+
 #		external_bar 					all:50:0
+
+# Automatically float non-resizable windows, such as palettes, system settings etc.
+#yabai -m signal --add event=window_created action="~/.config/yabai/float_small_windows.sh" 
+
+
+
+#
+#   	mouse_modifier               	fn		            \
+#	    mouse_action1                	move               	\
+#  	mouse_action2                		resize           	\
+#       auto balance 					off     		\
+#    	split_ratio                  	0.50          	\ 		\
+#    	split_type                   	auto 			\
