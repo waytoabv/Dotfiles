@@ -32,7 +32,7 @@ sketchybar --add item        cpu.top center                  \
                              background.padding_left=30      \
                                                             \
            --add item        cpu.percent center              \
-           --set cpu.percent label.font="$FONT:Heavy:12"    \
+           --set cpu.percent label.font="SF Mono:Bold:12"    \
                              label=CPU                      \
                              y_offset=-4                    \
                              width=40                       \

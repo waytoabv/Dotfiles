@@ -6,9 +6,9 @@
 source "$CONFIG_DIR/globalstyles.sh"
 
 sketchybar -m --add item network_up center \
-              --set network_up label.font="$FONT:Bold:9.0" \
+              --set network_up label.font="SF Mono:Bold:10.0" \
                                icon.font="$FONT:Bold:10.0" \
-                               label.width=55  \
+                               label.width=60  \
                                icon.padding_right=2 \
                                icon.drawing=on     \
                                icon=􀆇 \
@@ -19,9 +19,9 @@ sketchybar -m --add item network_up center \
                                script="$PLUGIN_DIR/network.sh" \
 \
               --add item network_down center \
-              --set network_down label.font="$FONT:Bold:9.0" \
+              --set network_down label.font="SF Mono:Bold:10.0" \
                                  icon.font="$FONT:Bold:10.0" \
-                                 label.width=55  \
+                                 label.width=60  \
                                  icon.padding_right=2 \
                                  icon=􀆈 \
                                  icon.drawing=on     \
