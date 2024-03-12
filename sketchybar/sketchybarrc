@@ -53,9 +53,6 @@ source "$ITEM_DIR/diskmonitor.sh"
 
 # Brackets
 sketchybar \
---add bracket Right_side diskmonitor diskmonitor.label diskmonitor.value cpu.top cpu.percent cpu.sys cpu.user ram swap network_up network_down music volume_alias wifi battery date time\
-    --set Right_side "${bracket_defaults2[@]}" \
-\
 --add bracket status_icons  volume_alias wifi battery \
     --set status_icons "${bracket_defaults[@]}" \
 \
@@ -68,10 +65,6 @@ sketchybar \
 --add bracket space_icons front_app \
     --set space_icons "${bracket_defaults[@]}" \
 \
---add bracket Left_side logo space.1 space.2 space.3 space.4 space.5 space_creator front_app \
-    --set Left_side "${bracket_defaults2[@]}" \
-\
-
 
 sketchybar --hotload on
 
@@ -79,3 +72,11 @@ sketchybar --hotload on
 sketchybar --update
 
 echo "sketchybar configuation loaded.."
+
+#--add bracket Right_side diskmonitor diskmonitor.label diskmonitor.value cpu.top cpu.percent cpu.sys cpu.user ram swap network_up network_down music volume_alias wifi battery date time\
+#    --set Right_side "${bracket_defaults2[@]}" \
+#\
+# other brackets
+#--add bracket Left_side logo space.1 space.2 space.3 space.4 space.5 space_creator front_app \
+#    --set Left_side "${bracket_defaults2[@]}" \
+#\

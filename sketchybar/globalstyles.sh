@@ -15,13 +15,13 @@ bar=(
   color=$TRANSPARENT                    
   shadow=off                                        
   position=top                                      
-  padding_right=5                                  
-  padding_left=10                                   
+  padding_right=6                                  
+  padding_left=6                                   
   corner_radius=9                                   
-  y_offset=3                                        
-  margin=10                                         
+  y_offset=0                                        
   blur_radius=10                                    
   notch_width=0
+  topmost=off
 )
 
 # Item Defaults

@@ -25,6 +25,7 @@ export YELLOW=0xffeed49f
 export ORANGE=0xfff5a97f
 export MAGENTA=0xffc6a0f6
 export GREY=0xff939ab7
+export PURPLE=0xffc29df1
 export TRANSPARENT=0x00000000
 export BG0=0xff1e1e2e
 export BG1=0x603c3e4f
@@ -36,6 +37,7 @@ export LIGHT_BLACK=0x8a262323
 export DARK_WHITE=0xc8cad3f5
 export FUNKY_BLUE=0x42171729
 export TRY=0x88211f21
+export CATGREY=0xff626880
 
 
 # General bar colors
