@@ -6,3 +6,7 @@ v1:
 
 v2 - big:
 ![CleanShot 2024-03-12 at 22 29 46@2x](https://github.com/waytoabv/Dotfiles/assets/127306391/42b8964d-40c2-48fc-9aec-8733da620e46)
+
+v2 - small:
+![CleanShot 2024-03-14 at 12 04 30@2x](https://github.com/waytoabv/Dotfiles/assets/127306391/0716a43a-3e32-4594-8c95-717f71c532dd)
+
