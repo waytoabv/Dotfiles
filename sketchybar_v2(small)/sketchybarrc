@@ -1,0 +1,82 @@
+ #!/usr/bin/env sh
+
+ # Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
+
+source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
+source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
+
+ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+
+
+POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+POPUP_OFF="sketchybar --set \$NAME popup.drawing=off"
+
+sketchybar --bar "${bar[@]}" --default "${item_defaults[@]}"
+
+
+# Setting up and starting the helper process
+HELPER=git.felix.helper
+killall helper
+cd $HOME/.config/sketchybar/helper && make
+$HOME/.config/sketchybar/helper/helper $HELPER > /dev/null 2>&1 &
+
+# Unload the macOS on screen indicator overlay for volume change
+# launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+
+# Left
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/yabai.sh"
+source "$ITEM_DIR/front_app.sh"
+
+# Center
+
+
+# Right
+source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/spacer.sh" right
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/vpn.sh"
+source "$ITEM_DIR/volumealias.sh"
+# source "$ITEM_DIR/things3.sh"
+source "$ITEM_DIR/music.sh"
+source "$ITEM_DIR/spacer2.sh" right
+source "$ITEM_DIR/network.sh"
+source "$ITEM_DIR/ram.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/diskmonitor.sh"
+
+
+# Brackets
+sketchybar \
+--add bracket status_icons  volume_alias wifi battery \
+    --set status_icons "${bracket_defaults[@]}" \
+\
+--add bracket date_icons date time \
+    --set date_icons "${bracket_defaults[@]}" \
+\
+--add bracket process_icons diskmonitor diskmonitor.label diskmonitor.value cpu.top cpu.percent cpu.sys cpu.user ram swap network_up network_down \
+    --set process_icons "${bracket_defaults[@]}" \
+\
+--add bracket space_icons front_app \
+    --set space_icons "${bracket_defaults[@]}" \
+\
+
+sketchybar --hotload on
+
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --update
+
+echo "sketchybar configuation loaded.."
+
+#--add bracket Right_side diskmonitor diskmonitor.label diskmonitor.value cpu.top cpu.percent cpu.sys cpu.user ram swap network_up network_down music volume_alias wifi battery date time\
+#    --set Right_side "${bracket_defaults2[@]}" \
+#\
+# other brackets
+#--add bracket Left_side logo space.1 space.2 space.3 space.4 space.5 space_creator front_app \
+#    --set Left_side "${bracket_defaults2[@]}" \
+#\
