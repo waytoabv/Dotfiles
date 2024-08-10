@@ -1,0 +1,12 @@
+#lunar shortcuts
+#toogle night mode: shift + lalt + ß
+hyper - m : "${HOME}"/.config/scripts/lunar.sh
+
+#aerospace
+#move to workspace
+ralt + cmd - 1 : aerospace workspace Code
+ralt + cmd - 2 : aerospace workspace Media
+ralt + cmd - 3 : aerospace workspace Social
+ralt + cmd - 4 : aerospace workspace Todo
+ralt + cmd - 5 : aerospace workspace Web
+lalt + space : aerospace layout floating tiling

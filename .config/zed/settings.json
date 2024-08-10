@@ -1,0 +1,15 @@
+{
+	"features": {
+		"inline_completion_provider": "none"
+	},
+	"scrollbar": {
+		"show": "auto",
+		"cursors": true,
+		"git_diff": true,
+		"search_results": true,
+		"selected_symbol": true,
+		"diagnostics": true
+	},
+	"theme": "Catppuccin Frappé",
+	"hard_tabs": true
+}
