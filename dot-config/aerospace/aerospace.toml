@@ -1,0 +1,177 @@
+start-at-login = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 30
+non-empty-workspaces-root-containers-layout-on-startup = 'smart'
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+gaps.inner.horizontal = 10
+gaps.inner.vertical = 10
+gaps.outer.left = 12
+gaps.outer.bottom = 10
+gaps.outer.top = 44
+gaps.outer.right = 12
+
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+after-startup-command = [
+	'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = [
+	'/bin/bash',
+	'-c',
+	'/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+
+[workspace-to-monitor-force-assignment]
+Code = 'built-in'
+Web = ['secondary', 'built-in']
+Todo = ['secondary', 'built-in']
+Social = ['secondary', 'built-in']
+Media = ['secondary', 'built-in']
+
+
+[mode.main.binding]
+alt-period = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+alt-f = 'fullscreen'
+alt-r = 'reload-config'
+cmd-h = []
+
+
+ctrl-alt-shift-cmd-n = 'workspace next'
+ctrl-alt-shift-cmd-p = 'workspace prev'
+ctrl-alt-shift-cmd-c = 'reload-config'
+
+
+alt-tab = 'workspace-back-and-forth'
+
+cmd-alt-ctrl-h = ['focus left']
+cmd-alt-ctrl-j = ['focus down']
+cmd-alt-ctrl-k = ['focus up']
+cmd-alt-ctrl-l = ['focus right']
+
+ctrl-alt-shift-cmd-h = ['move left']
+ctrl-alt-shift-cmd-j = ['move down']
+ctrl-alt-shift-cmd-k = ['move up']
+ctrl-alt-shift-cmd-l = ['move right']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+ctrl-alt-shift-cmd-1 = ['move-node-to-workspace Code', 'workspace Code']
+ctrl-alt-shift-cmd-2 = ['move-node-to-workspace Media', 'workspace Media']
+ctrl-alt-shift-cmd-3 = ['move-node-to-workspace Social', 'workspace Social']
+ctrl-alt-shift-cmd-4 = ['move-node-to-workspace Todo', 'workspace Todo']
+ctrl-alt-shift-cmd-5 = ['move-node-to-workspace Web', 'workspace Web']
+
+alt-shift-backspace = 'mode service'
+
+[mode.service.binding]
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+f = [
+	'layout floating tiling',
+	'mode main',
+] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+esc = 'mode main'
+
+
+# Windows that should float
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.runningwithcrayons.Alfred-Preferences'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.corecode.MacUpdater'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'ch.protonvpn.mac'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.colliderli.iina'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'imagetasks.Pixea'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.outercorner.Secrets'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.daisydiskapp.DaisyDiskStandAlone'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'de.dwd.warnapp'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+
+
+## move to social workspace
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = ['move-node-to-workspace Social']
+[[on-window-detected]]
+if.app-id = 'com.readdle.smartemail-Mac'
+run = ['move-node-to-workspace Social']
+
+## move to multimedia workspace
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = ['move-node-to-workspace Media']
+[[on-window-detected]]
+if.app-id = 'com.apple.podcasts'
+run = ['move-node-to-workspace Media']
+[[on-window-detected]]
+if.app-id = 'org.videolan.vlc'
+run = ['move-node-to-workspace Media']
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickTimePlayerX'
+run = ['move-node-to-workspace Media']
+[[on-window-detected]]
+if.app-id = 'com.colliderli.iina'
+run = ['move-node-to-workspace Media']
+[[on-window-detected]]
+if.app-id = 'imagetasks.Pixea'
+run = ['move-node-to-workspace Media']
+
+##move to code workspace
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ['move-node-to-workspace Code']
+
+## move to web workspace
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = ['move-node-to-workspace Web']
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = ['move-node-to-workspace Web']
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = ['move-node-to-workspace Web']
+
+##move to space Todo
+[[on-window-detected]]
+if.app-id = 'com.readdle.CalendarsLite'
+run = ['move-node-to-workspace Todo']
+[[on-window-detected]]
+if.app-id = 'com.culturedcode.ThingsMac'
+run = ['move-node-to-workspace Todo']
