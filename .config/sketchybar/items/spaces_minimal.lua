@@ -18,7 +18,7 @@ local container_bracket = sbar.add("bracket", {}, {
 container_bracket.items = {}
 
 -- Kanji characters for the numbers 1 to 10
-local kanji_numbers = { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" }
+local kanji_numbers = { "㆒", "二", "三", "四", "五", "六", "七", "八", "九", "十" }
 
 for i = 1, 10, 1 do
 	local space = sbar.add("space", "space." .. i, {
