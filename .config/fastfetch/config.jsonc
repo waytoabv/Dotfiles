@@ -34,17 +34,6 @@
 			"keyColor": "green",
 		},
 		{
-			"type": "swap",
-			"key": "│ ├󰁄",
-			"keyColor": "green",
-			"text": "echo swap",
-		},
-		{
-			"type": "disk",
-			"key": "└ └",
-			"keyColor": "green",
-		},
-		{
 			"type": "custom",
 			"format": "\u001b[90m└────────────────────────────────────────────────────┘",
 		},

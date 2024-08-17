@@ -48,7 +48,7 @@ hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # Toggle sketchybar
 hyper - space : sketchybar --bar hidden=toggle
-hyper - r : sketchybar --remove '/.*/' && sh -c 'export CONFIG_DIR=$HOME/.config/sketchybar && $CONFIG_DIR/sketchybarrc'
+hyper - r : brew services restart sketchybar
 
 
 # #Start/Stopping Yabai
