@@ -155,6 +155,7 @@ return {
 	["mpv"] = ":mpv:",
 	["Mullvad Browser"] = ":mullvad_browser:",
 	["Music"] = ":music:",
+	["Musik"] = ":music:",
 	["音乐"] = ":music:",
 	["Musique"] = ":music:",
 	["Neovide"] = ":neovide:",
