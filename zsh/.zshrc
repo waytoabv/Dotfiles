@@ -9,24 +9,30 @@ function random {
 function color {
     case $1 in
     green)
-    echo -e "\033]6;1;bg;red;brightness;57\a"$PRELINE
-    echo -e "\033]6;1;bg;green;brightness;197\a"$PRELINE
-    echo -e "\033]6;1;bg;blue;brightness;77\a"$PRELINE
+    echo -e "\033]6;1;bg;red;brightness;80\a"$PRELINE     # Red brightness for green color
+    echo -e "\033]6;1;bg;green;brightness;250\a"$PRELINE   # Green brightness (Dracula green: #50fa7b)
+    echo -e "\033]6;1;bg;blue;brightness;123\a"$PRELINE    # Blue brightness for green color
     ;;
     red)
-    echo -e "\033]6;1;bg;red;brightness;270\a"$PRELINE
-    echo -e "\033]6;1;bg;green;brightness;60\a"$PRELINE
-    echo -e "\033]6;1;bg;blue;brightness;83\a"$PRELINE
+    echo -e "\033]6;1;bg;red;brightness;255\a"$PRELINE     # Red brightness (Dracula red: #ff5555)
+    echo -e "\033]6;1;bg;green;brightness;85\a"$PRELINE    # Green brightness for red color
+    echo -e "\033]6;1;bg;blue;brightness;85\a"$PRELINE     # Blue brightness for red color
     ;;
     orange)
-    echo -e "\033]6;1;bg;red;brightness;227\a"$PRELINE
-    echo -e "\033]6;1;bg;green;brightness;143\a"$PRELINE
-    echo -e "\033]6;1;bg;blue;brightness;10\a"$PRELINE
+    echo -e "\033]6;1;bg;red;brightness;255\a"$PRELINE     # Red brightness (Dracula orange: #ffb86c)
+    echo -e "\033]6;1;bg;green;brightness;184\a"$PRELINE   # Green brightness for orange color
+    echo -e "\033]6;1;bg;blue;brightness;108\a"$PRELINE    # Blue brightness for orange color
+    ;;
+    purple)
+    echo -e "\033]6;1;bg;red;brightness;189\a"$PRELINE     # Red brightness (Dracula purple: #bd93f9)
+    echo -e "\033]6;1;bg;green;brightness;147\a"$PRELINE   # Green brightness for purple color
+    echo -e "\033]6;1;bg;blue;brightness;249\a"$PRELINE    # Blue brightness for purple color
     ;;
     *)
     random
     esac
 }
+
 
 color    #uncomment to enable automatically set random color when tab created
 
@@ -79,7 +85,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -177,5 +183,3 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
-
-ZSH_THEME="dracula"

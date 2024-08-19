@@ -62,7 +62,7 @@ local function update_windows(windows)
 	elseif count > 1 then
 		max_length = 35
 	else
-		max_length = 50
+		max_length = 60
 	end
 
 	for _, window in ipairs(filtered_windows) do
