@@ -79,7 +79,7 @@ export BAT_THEME=Dracula
 alias cat="bat"
 
 # Eza better ls
-alias ls="eza --icons=always --color=always --long --no-time --no-user --no-permissions"
+alias ls="eza --git --header -l --no-quotes -a --git --no-user --time-style relative --hyperlink --icons=always --color=always"
 
 # Activate autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
