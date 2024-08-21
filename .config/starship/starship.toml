@@ -1,6 +1,7 @@
 format = """
 $directory\
 $git_branch\
+$git_commit\
 $git_status\
 $fill\
 $python\
@@ -46,9 +47,22 @@ style = 'bold pink'
 symbol = ' '
 format = '[on](white) [$symbol$branch ]($style)'
 
+[git_commit]
+disabled = false
+commit_hash_length = 6
+tag_symbol = " "
+only_detached = false
+tag_disabled = false
+format = '[$tag]($style) '
+style = 'purple'
+
 [git_status]
-style = 'bold red'
-format = '([$all_status$ahead_behind]($style) )'
+format = '(  $staged$modified$renamed$deleted$untracked)($style)'
+untracked = '([$count untracked ](italic fg:bright-black))'
+modified = '([$count modified ](italic fg:bright-black))'
+staged = '([$count modified ](italic green))'
+deleted = '([$count deleted ](italic green))'
+renamed = '([$count renamed ](italic green))'
 
 [fill]
 symbol = ' '
