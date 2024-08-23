@@ -32,3 +32,5 @@ node_modules/  # If you're using any node packages in your dotfiles
 .config/zed/embeddings/
 .config/zed/prompts/
 .config/zed/conversations/
+.config/fish/functions/_fzf*
+.config/fish/functions/fzf_configure_bindings.fish
