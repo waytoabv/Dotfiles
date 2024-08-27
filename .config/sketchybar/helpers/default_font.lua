@@ -1,6 +1,6 @@
 return {
-	text = "Input Mono", -- Used for text
-	numbers = "Input Mono", -- Used for numbers
+	text = "MonoLisa", -- Used for text
+	numbers = "MonoLisa", -- Used for numbers
 	weather = "Hack Nerd Font",
 
 	-- Unified font style map

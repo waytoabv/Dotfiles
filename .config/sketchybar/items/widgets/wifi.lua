@@ -3,7 +3,7 @@ local colors = require("colors")
 local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "network_update"
--- for the network interface "en0", which is fimagenta every 2.0 seconds.
+-- for the network interface "en0", which is fired every 2.0 seconds.
 sbar.exec(
 	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
 
@@ -27,7 +27,7 @@ local wifi_up = sbar.add("item", "widgets.wifi1", {
 			style = settings.font.style_map["Bold"],
 			size = 9.0,
 		},
-		color = colors.magenta,
+		color = colors.red,
 		string = "??? Bps",
 	},
 	y_offset = 4,
@@ -161,7 +161,7 @@ local router = sbar.add("item", {
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
 wifi_up:subscribe("network_update", function(env)
-	local up_color = (env.upload == "000 Bps") and colors.grey or colors.magenta
+	local up_color = (env.upload == "000 Bps") and colors.grey or colors.pink
 	local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
 	wifi_up:set({
 		icon = { color = up_color },
@@ -184,7 +184,7 @@ wifi:subscribe({ "wifi_change", "system_woke", "forced" }, function(env)
 	wifi:set({
 		icon = {
 			string = icons.wifi.disconnected,
-			color = colors.magenta,
+			color = colors.pink,
 		}
 	})
 	sbar.exec([[ipconfig getifaddr en0]], function(ip)

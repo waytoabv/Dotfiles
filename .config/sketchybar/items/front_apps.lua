@@ -18,8 +18,8 @@ local apps = sbar.add("bracket", "apps", {}, {
 	},
 	label = {
 		font = {
-			style = settings.font.style_map["Medium"],
-			size = 11.0,
+			style = settings.font.style_map["Black"],
+			size = 12.0,
 		},
 	},
 	background = {
@@ -83,7 +83,7 @@ local function update_windows(windows)
 				string = window_label,
 				highlight = window['has-focus'],
 				color = colors.purple,
-				highlight_color = colors.magenta,
+				highlight_color = colors.pink,
 			},
 			icon = {
 				string = icon,
