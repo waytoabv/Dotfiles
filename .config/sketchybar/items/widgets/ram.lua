@@ -11,7 +11,6 @@ local ram = sbar.add("item", "widgets.ram1", {
 		padding_right = 0,
 		padding_left = 0,
 		font = {
-			family = "SF Mono",
 			style = settings.font.style_map["Bold"],
 			size = 9.0,
 		},
@@ -19,7 +18,6 @@ local ram = sbar.add("item", "widgets.ram1", {
 	},
 	label = {
 		font = {
-			family = "SF Mono",
 			style = settings.font.style_map["Bold"],
 			size = 9.0,
 		},

@@ -18,10 +18,8 @@ local weather_icon = sbar.add("item", "widgets.weather.icon", {
 	label = {
 		font = {
 			family = settings.font.numbers,
-			style = settings.font.style_map["Bold"],
-			size = 12.0,
 		},
-		string = "...°C",
+		string = "...°",
 	},
 	update_freq = 180,
 })
@@ -101,7 +99,7 @@ weather_icon:subscribe({ "routine", "forced", "system_woke" }, function(env)
 
 			weather_icon:set({
 				label = {
-					string = rounded_temperature .. "°C",
+					string = rounded_temperature .. "°",
 					color = colors.dirty_white,
 				},
 				icon = {

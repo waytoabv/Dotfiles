@@ -10,6 +10,15 @@
 		"selected_symbol": true,
 		"diagnostics": true
 	},
-	"theme": "Catppuccin Frappé",
-	"hard_tabs": true
+	"theme": "Dracula Pro",
+	"hard_tabs": true,
+	"ui_font_family": "MonoLisa",
+	"buffer_font_family": "MonoLisa",
+	"buffer_font_features": {
+		"ss02": true,
+		"ss03": true,
+		"ss08": true,
+		"ss15": true,
+		"ss11": true
+	}
 }

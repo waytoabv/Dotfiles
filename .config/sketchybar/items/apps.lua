@@ -40,7 +40,7 @@ local function update_windows(windows)
 				max_chars = width,
 				scroll_duration = 150,
 				width = width,
-				highlight_color = colors.magenta,
+				highlight_color = colors.pink,
 				highlight = line['has-focus'],
 			},
 			padding_right = 2,
