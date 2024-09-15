@@ -202,7 +202,7 @@ wifi:subscribe({ "wifi_change", "system_woke", "forced" }, function(env)
 			}
 		})
 
-		-- Führe den Rest des Codes aus, der von der IP-Verbindung abhängt
+		-- VPN icon
 		sbar.exec([[sleep 2; scutil --nwi | grep -m1 'utun' | awk '{ print $1 }']], function(vpn)
 			local vpnconnected = not (vpn == "")
 
