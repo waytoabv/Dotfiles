@@ -33,7 +33,6 @@ local function set_window_title()
 			end
 			front_app:set({ label = { string = window_title } })
 		else
-			-- Set title to Finder, as empty spaces will not return a window title
 			front_app:set({ label = { string = "-" }, icon = { string = "empty" } })
 		end
 	end)

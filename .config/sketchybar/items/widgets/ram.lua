@@ -30,7 +30,7 @@ local ram = sbar.add("item", "widgets.ram1", {
 	update_freq = 180,
 })
 
-
+-- SWAP Plugin
 local swap = sbar.add("item", "widgets.swap1", {
 	position = "right",
 	padding_left = -5,
@@ -123,22 +123,16 @@ swap:subscribe({ "routine", "forced" }, function(env)
 
 			local function formatSwapUsage(swapuse)
 				if swapuse < 1 then
-					-- Weniger als 1 MB, grau
 					return "0.00 Mb", colors.grey
 				elseif swapuse < 100 then
-					-- Weniger als 1000 MB, weiß
 					return string.format("•%03d Mb ", swapuse), colors.dirtywhite
 				elseif swapuse < 1000 then
-					-- Weniger als 1000 MB, yellow
 					return string.format("•%03d Mb ", swapuse), colors.yellow
 				elseif swapuse < 2000 then
-					-- Weniger als 3 GB, orange
 					return string.format("%.2f Gb", swapuse / 1000), colors.orange
 				elseif swapuse < 10000 then
-					-- Weniger als 10 GB, rot
 					return string.format("%.2f Gb", swapuse / 1000), colors.red
 				else
-					-- 10 GB oder mehr, rot
 					return string.format("%.1f Gb", swapuse / 1000), colors.red
 				end
 			end

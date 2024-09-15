@@ -94,7 +94,6 @@ end
 weather_icon:subscribe({ "routine", "forced", "system_woke" }, function(env)
 	fetch_weather_data(function(temperature, icon)
 		if temperature and icon then
-			-- Rounding the temperature to the nearest whole number
 			local rounded_temperature = math.floor(temperature + 0.5)
 
 			weather_icon:set({
@@ -222,7 +221,6 @@ local function toggle_details()
 	if should_draw then
 		weather_info:set({ popup = { drawing = true } })
 		sbar.exec("~/.scripts/akt_weather.sh", function(result)
-			-- Extraktion der einzelnen Werte aus dem strukturierten Output
 			local popup_temperature = string.match(result, "Temperature:%s*(%d+%.?%d*)°C")
 			local popup_station_name = string.match(result, "Station Name:%s*(.-)\n")
 			local popup_condition = string.match(result, "Condition:%s*(.-)\n")
@@ -231,14 +229,10 @@ local function toggle_details()
 			local popup_cloud_cover = string.match(result, "Cloud Cover:%s*(.-)\n")
 			local popup_visibility = string.match(result, "Visibility:%s*(.-)\n")
 
-			-- Übersetze die Bedingung
 			popup_condition = translate_condition(popup_condition)
 
-			-- Konvertiere die Sichtweite von Metern in Kilometer
 			local visibility_km = tonumber(popup_visibility) / 1000
 
-			-- Setze die extrahierten Werte in die Widgets
-			-- Hier wird das Icon auch für `station_name` verwendet
 			station_name:set({
 				label = popup_station_name,
 				icon = {

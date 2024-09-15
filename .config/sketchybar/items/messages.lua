@@ -28,6 +28,7 @@ local messages = sbar.add("item", "widgets.messages", {
 
 messages:subscribe({ "routine", "front_app_changed", "space_change", "space_windows_change" }, function(env)
 	sbar.exec(
+	-- requires full disk access
 		[[sqlite3 ~/Library/Messages/chat.db "SELECT COUNT(guid) FROM message WHERE NOT(is_read) AND NOT(is_from_me) AND text !=''"]],
 		function(newmess)
 			local mess = tonumber(newmess)

@@ -77,7 +77,6 @@ local function update_windows(windows)
 		local icon_lookup = app_icons[window['app']]
 		local icon = icon_lookup or app_icons["default"]
 
-		-- Add item to sbar
 		sbar.add("item", "apps." .. window['id'], {
 			label = {
 				string = window_label,
