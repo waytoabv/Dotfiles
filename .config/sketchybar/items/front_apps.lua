@@ -44,7 +44,7 @@ local function update_windows(windows)
 	-- Filter windows to exclude "Arc" and "kitty" without titles
 	local filtered_windows = {}
 	for _, window in ipairs(windows) do
-		if not ((window['app'] == "Arc" or window['app'] == "kitty") and (window['title'] == nil or window['title'] == "")) then
+		if not ((window['app'] == "Arc" or window['app'] == "FiveNotes" or window['app'] == "kitty") and (window['title'] == nil or window['title'] == "")) then
 			table.insert(filtered_windows, window)
 		end
 	end

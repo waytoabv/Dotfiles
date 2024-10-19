@@ -7,6 +7,8 @@ set -q MANPATH; or set MANPATH ''
 set -gx MANPATH /opt/homebrew/share/man $MANPATH
 set -q INFOPATH; or set INFOPATH ''
 set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
+set -gx PATH /Users/lukas/Library/Python/3.12/bin $PATH
+
 
 # custom aliases
 source ~/.config/fish/aliases.fish

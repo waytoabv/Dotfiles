@@ -39,7 +39,7 @@ yabai -m rule --add app="^Spark$" title!="^Spark - INBOX$"							manage=off
 yabai -m rule --add app="^Shottr$" title="^Preferences$"							manage=off
 yabai -m rule --add app="^Arc$" title="^Lukas$"				  						manage=off
 yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					manage=off
-yabai -m rule --add app="^Tot$"	title="^Tot$"										manage=off mouse_follows_focus=on
+yabai -m rule --add app="^FiveNotes$" title="^$"									manage=on mouse_follows_focus=on
 yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					manage=off
 yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		manage=off
 yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
@@ -47,7 +47,6 @@ yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Tr
 
 
 echo "yabai configuration loaded.."
-
 
 
 
