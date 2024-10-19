@@ -125,9 +125,9 @@ swap:subscribe({ "routine", "forced" }, function(env)
 				if swapuse < 1 then
 					return "0.00 Mb", colors.grey
 				elseif swapuse < 100 then
-					return string.format("•%03d Mb ", swapuse), colors.dirtywhite
+					return string.format("%03d Mb", math.floor(swapuse)), colors.dirtywhite
 				elseif swapuse < 1000 then
-					return string.format("•%03d Mb ", swapuse), colors.yellow
+					return string.format("%03d Mb", math.floor(swapuse)), colors.yellow
 				elseif swapuse < 2000 then
 					return string.format("%.2f Gb", swapuse / 1000), colors.orange
 				elseif swapuse < 10000 then
