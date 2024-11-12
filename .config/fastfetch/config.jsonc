@@ -22,22 +22,22 @@
 		},
 		{
 			"type": "host",
-			"key": " PC",
+			"key": " PC ",
 			"keyColor": "red",
 		},
 		{
 			"type": "cpu",
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "red",
 		},
 		{
 			"type": "gpu",
-			"key": "│ ├󰒆",
+			"key": "│ ├󰒆 ",
 			"keyColor": "red",
 		},
 		{
 			"type": "memory",
-			"key": "└ └󰍛",
+			"key": "└ └󰍛 ",
 			"keyColor": "red",
 		},
 		{
@@ -50,53 +50,53 @@
 		},
 		{
 			"type": "os",
-			"key": "􀣺 OS",
+			"key": "􀣺 OS ",
 			"keyColor": "green",
 		},
 		{
 			"type": "kernel",
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "green",
 		},
 		{
 			"type": "packages",
-			"key": "│ ├󰏖",
+			"key": "│ ├󰏖 ",
 			"keyColor": "green",
 		},
 		{
 			"type": "shell",
-			"key": "└ └",
+			"key": "└ └ ",
 			"keyColor": "green",
 		},
 		{
 			"type": "de",
-			"key": " DE",
+			"key": " DE ",
 			"keyColor": "blue",
 		},
 		{
 			"type": "lm",
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "blue",
 		},
 		{
 			"type": "wm",
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "blue",
 		},
 		{
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "blue",
 			"type": "command",
 			"text": "pgrep yabai &> /dev/null && echo yabai || echo Quartz Compositor",
 		},
 		{
 			"type": "terminal",
-			"key": "│ ├",
+			"key": "│ ├ ",
 			"keyColor": "blue",
 		},
 		{
 			"type": "terminalfont",
-			"key": "└ └",
+			"key": "└ └ ",
 			"keyColor": "blue",
 		},
 		{
@@ -109,13 +109,13 @@
 		},
 		{
 			"type": "command",
-			"key": "  OS Age ",
+			"key": "  OS Age",
 			"keyColor": "magenta",
 			"text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days",
 		},
 		{
 			"type": "uptime",
-			"key": "  Uptime ",
+			"key": "  Uptime",
 			"keyColor": "magenta",
 		},
 		{
