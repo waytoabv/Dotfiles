@@ -1,6 +1,4 @@
 start-at-login = false
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 non-empty-workspaces-root-containers-layout-on-startup = 'smart'
 default-root-container-layout = 'tiles'
@@ -29,11 +27,11 @@ exec-on-workspace-change = [
 
 
 [workspace-to-monitor-force-assignment]
-Code = 'built-in'
-Web = ['secondary', 'built-in']
-Todo = ['secondary', 'built-in']
-Social = ['secondary', 'built-in']
-Media = ['secondary', 'built-in']
+1_code = 'built-in'
+2_web = ['secondary', 'built-in']
+3_todo = ['secondary', 'built-in']
+4_social = ['secondary', 'built-in']
+5_media = ['secondary', 'built-in']
 
 
 [mode.main.binding]
@@ -66,11 +64,11 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-ctrl-alt-shift-cmd-1 = ['move-node-to-workspace Code', 'workspace Code']
-ctrl-alt-shift-cmd-2 = ['move-node-to-workspace Media', 'workspace Media']
-ctrl-alt-shift-cmd-3 = ['move-node-to-workspace Social', 'workspace Social']
-ctrl-alt-shift-cmd-4 = ['move-node-to-workspace Todo', 'workspace Todo']
-ctrl-alt-shift-cmd-5 = ['move-node-to-workspace Web', 'workspace Web']
+ctrl-alt-shift-cmd-1 = ['move-node-to-workspace 1_code', 'workspace 1_code']
+ctrl-alt-shift-cmd-2 = ['move-node-to-workspace 2_web', 'workspace 5_media']
+ctrl-alt-shift-cmd-3 = ['move-node-to-workspace 3_todo', 'workspace 4_social']
+ctrl-alt-shift-cmd-4 = ['move-node-to-workspace 4_social', 'workspace 3_todo']
+ctrl-alt-shift-cmd-5 = ['move-node-to-workspace 5_media', 'workspace 2_web']
 
 alt-shift-backspace = 'mode service'
 
@@ -124,54 +122,54 @@ if.app-id = 'com.apple.AppStore'
 run = 'layout floating'
 
 
-## move to social workspace
+## move to 4_social workspace
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = ['move-node-to-workspace Social']
+run = ['move-node-to-workspace 4_social']
 [[on-window-detected]]
 if.app-id = 'com.readdle.smartemail-Mac'
-run = ['move-node-to-workspace Social']
+run = ['move-node-to-workspace 4_social']
 
-## move to multimedia workspace
+## move to multi5_media workspace
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 [[on-window-detected]]
 if.app-id = 'com.apple.podcasts'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 [[on-window-detected]]
 if.app-id = 'org.videolan.vlc'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 [[on-window-detected]]
 if.app-id = 'com.apple.QuickTimePlayerX'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 [[on-window-detected]]
 if.app-id = 'com.colliderli.iina'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 [[on-window-detected]]
 if.app-id = 'imagetasks.Pixea'
-run = ['move-node-to-workspace Media']
+run = ['move-node-to-workspace 5_media']
 
-##move to code workspace
+##move to 1_code workspace
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = ['move-node-to-workspace Code']
+run = ['move-node-to-workspace 1_code']
 
-## move to web workspace
+## move to 2_web workspace
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace 2_web']
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace 2_web']
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = ['move-node-to-workspace Web']
+run = ['move-node-to-workspace 2_web']
 
-##move to space Todo
+##move to space 3_todo
 [[on-window-detected]]
 if.app-id = 'com.readdle.CalendarsLite'
-run = ['move-node-to-workspace Todo']
+run = ['move-node-to-workspace 3_todo']
 [[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
-run = ['move-node-to-workspace Todo']
+run = ['move-node-to-workspace 3_todo']

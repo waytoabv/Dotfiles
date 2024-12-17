@@ -1,5 +1,12 @@
 {
-	"features": {
+	"assistant": {
+  "default_model": {
+   "provider": "openai",
+   "model": "gpt-4o-mini"
+  },
+  "version": "2"
+ },
+ "features": {
 		"inline_completion_provider": "none"
 	},
 	"scrollbar": {

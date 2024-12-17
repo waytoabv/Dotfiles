@@ -6,3 +6,6 @@ setopt HIST_IGNORE_ALL_DUPS
 [ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
 [ -f "$HOME/.config/zsh/iterm-tab-colors.zsh" ] && source "$HOME/.config/zsh/iterm-tab-colors.zsh"
 [ -f "$HOME/.config/zsh/transient-prompt.zsh" ] && source "$HOME/.config/zsh/transient-prompt.zsh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/lukas/.cache/lm-studio/bin"

@@ -24,6 +24,10 @@ return {
 		bg = 0xd322212c,
 		border = 0xd322212c
 	},
+	spaces = {
+		active = 0xffFFFF80,
+		inactive = 0xc8cad3f5,
+	},
 	bg1 = 0x331e1d27,
 	bg2 = 0xff302c45,
 
