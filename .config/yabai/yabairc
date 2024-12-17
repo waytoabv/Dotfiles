@@ -12,10 +12,10 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
 	yabai -m config                                 \
     	layout                      bsp         	\
 		auto_balance                on				\
-    	top_padding                 44             	\
+    	top_padding                 10             	\
     	bottom_padding              10            	\
-    	left_padding                12             	\
-    	right_padding               12              \
+    	left_padding                10            	\
+    	right_padding               10              \
     	window_gap                  10              \
 	    mouse_drop_action 	       	swap			\
     	focus_follows_mouse 	   	autofocus		\
@@ -24,11 +24,11 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
         window_opacity             	off             \
         window_opacity_duration    	0.2            \
         active_window_opacity      	1.0            \
-        normal_window_opacity      	0.96           \
+        normal_window_opacity      	0.98           \
         insert_feedback_color      	0xff9dd274     \
 
 # 64 left fpr vertical sketchy
-# 34 top for top sketchybar
+# 44 top for top sketchybar
 
 # Disable specific apps
 yabai -m rule --add label="sys" app="^System.*einstellungen$"   					manage=off
@@ -42,6 +42,7 @@ yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					manage=off
 yabai -m rule --add app="^FiveNotes$" title="^$"									manage=on mouse_follows_focus=on
 yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					manage=off
 yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		manage=off
+yabai -m rule --add app="^SigmaOS$" title!="^SigmaOS$"								manage=off
 yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
 yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store|Time Machine|Finder)$" manage=off mouse_follows_focus=on
 

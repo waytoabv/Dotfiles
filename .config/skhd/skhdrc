@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Navigation (lalt - ...)
 
 # Extended Window Navigation: lalt - {h, ä}
@@ -6,9 +8,9 @@ hyper - 0x27 : yabai -m window --focus  last
 
 # Float / Unfloat window: lalt - space
 lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
-
+hyper - s : yabai -m space --layout stack
 # Make window zoom to fullscreen: shift + lalt - f
-# hyper - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
+hyper - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
 
 ## Window Movement (shift + lalt - ...)
 # Moving windows in spaces: shift + lalt - {j, k, l, ö}
@@ -19,18 +21,14 @@ hyper - 0x29 : yabai -m window --warp east || $(yabai -m window --display east &
 
 
 # Moving windows between spaces:
-hyper - 1 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[1] ]] \
-                  && yabai -m window --space $SPACES[1] && yabai -m window --space 1 && yabai -m space --switch 1
+hyper - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+hyper - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+hyper - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+hyper - 4 : yabai -m window --space 4 && yabai -m space --focus 4
 
 
-hyper - 2 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[2] ]] \
-                  && yabai -m window --space $SPACES[2]
 
-hyper - 3 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[3] ]] \
-                  && yabai -m window --space $SPACES[3]
 
-hyper - 4 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]')) && [[ -n $SPACES[4] ]] \
-                  && yabai -m window --space $SPACES[4]
 
 hyper - p : yabai -m window --space prev && yabai -m space --focus prev
 hyper - n : yabai -m window --space next && yabai -m space --focus next
@@ -45,6 +43,10 @@ hyper - e : yabai -m space --balance
 # Enable / Disable gaps in current workspace: ctrl + lalt - g
 hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
+# Switch Windows in Stack
+alt - down : yabai -m window --focus stack.next
+alt - up : yabai -m window --focus stack.prev
+
 
 # Toggle sketchybar
 hyper - space : sketchybar --bar hidden=toggle
@@ -53,14 +55,8 @@ hyper - r : brew services restart sketchybar
 
 # #Start/Stopping Yabai
 # #e.g. bind to key in skhd:
-hyper - 1 : yabai --start-service
-hyper - 0 : yabai --stop-service
 hyper - 9 : yabai --restart-service
 
 #lunar shortcuts
 #toogle night mode: shift + lalt + ß
 hyper - m : "${HOME}"/.scripts/lunar.sh
-
-
-#new finder window
-lalt + cmd - n: open -a "New Finder Window.app"

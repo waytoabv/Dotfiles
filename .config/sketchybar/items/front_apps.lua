@@ -2,11 +2,10 @@ local colors = require("colors")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 
--- Events registration
+
 sbar.add("event", "window_focus")
 sbar.add("event", "title_change")
 
--- Setup for displaying all windows
 local apps = sbar.add("bracket", "apps", {}, {
 	position = "left",
 	icon = {
@@ -29,7 +28,7 @@ local apps = sbar.add("bracket", "apps", {}, {
 	},
 })
 
--- Function to truncate strings to a max length and add ellipsis if needed
+-- Function to truncate strings to a max length and add dots if needed
 local function truncate_string(str, max_length)
 	if #str > max_length then
 		return str:sub(1, max_length) .. "…"
@@ -41,7 +40,7 @@ end
 local function update_windows(windows)
 	sbar.remove("/apps.\\.*/")
 
-	-- Filter windows to exclude "Arc" and "kitty" without titles
+	-- Filter windows to exclude "Arc", "Fivenotes(WIP)" and "kitty" without titles
 	local filtered_windows = {}
 	for _, window in ipairs(windows) do
 		if not ((window['app'] == "Arc" or window['app'] == "FiveNotes" or window['app'] == "kitty") and (window['title'] == nil or window['title'] == "")) then
@@ -51,12 +50,11 @@ local function update_windows(windows)
 
 	local max_length
 
-	-- Use the count of filtered windows for determining max_length
 	local count = #filtered_windows
 	if count > 4 then
 		max_length = nil -- Show only the app name
 	elseif count > 3 then
-		max_length = 15
+		max_length = 10
 	elseif count > 2 then
 		max_length = 25
 	elseif count > 1 then
@@ -103,7 +101,6 @@ local function get_apps()
 	end)
 end
 
--- Subscribe to events to keep the window list updated
 apps:subscribe("space_change", get_apps)
 apps:subscribe("front_app_changed", get_apps)
 apps:subscribe("title_change", get_apps)
