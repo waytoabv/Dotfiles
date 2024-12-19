@@ -20,20 +20,21 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
 	    mouse_drop_action 	       	swap			\
     	focus_follows_mouse 	   	autofocus		\
 		mouse_follows_focus			off        		\
-        window_shadow              	float          \
+        window_shadow              	float           \
         window_opacity             	off             \
-        window_opacity_duration    	0.2            \
-        active_window_opacity      	1.0            \
-        normal_window_opacity      	0.98           \
-        insert_feedback_color      	0xff9dd274     \
+        window_opacity_duration    	0.2             \
+        active_window_opacity      	1.0             \
+        normal_window_opacity      	0.98            \
+        insert_feedback_color      	0xff9dd274      \
 
-# 64 left fpr vertical sketchy
+# 64 left for vertical sketchy
 # 44 top for top sketchybar
 
 # Disable specific apps
 yabai -m rule --add label="sys" app="^System.*einstellungen$"   					manage=off
 yabai -m rule --add app="^iTerm"													manage=off mouse_follows_focus=on
 yabai -m rule --add app="^Lunar$" title="^Settings"									manage=off
+yabai -m rule --add app="^Grila$"               									manage=off
 yabai -m rule --add app="^BusyCal$" title!="^$"										manage=off
 yabai -m rule --add app="^Spark$" title!="^Spark - INBOX$"							manage=off
 yabai -m rule --add app="^Shottr$" title="^Preferences$"							manage=off
@@ -45,6 +46,7 @@ yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 	
 yabai -m rule --add app="^SigmaOS$" title!="^SigmaOS$"								manage=off
 yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
 yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store|Time Machine|Finder)$" manage=off mouse_follows_focus=on
+
 
 
 echo "yabai configuration loaded.."
@@ -63,7 +65,7 @@ echo "yabai configuration loaded.."
 #
 #   	mouse_modifier               	fn		            \
 #	    mouse_action1                	move               	\
-#  	mouse_action2                		resize           	\
+#  	    mouse_action2                	resize           	\
 #       auto balance 					off     		\
 #    	split_ratio                  	0.50          	\ 		\
 #    	split_type                   	auto 			\

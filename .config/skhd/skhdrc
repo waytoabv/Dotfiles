@@ -41,7 +41,11 @@ hyper - y : yabai -m space --mirror y-axis
 hyper - e : yabai -m space --balance
 
 # Enable / Disable gaps in current workspace: ctrl + lalt - g
-hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap;
+
+# Enable / DIsbale Borders
+hyper - b : "${HOME}"/.scripts/toggle_borders.sh
+
 
 # Switch Windows in Stack
 alt - down : yabai -m window --focus stack.next
@@ -49,8 +53,8 @@ alt - up : yabai -m window --focus stack.prev
 
 
 # Toggle sketchybar
-hyper - space : sketchybar --bar hidden=toggle
-hyper - r : brew services restart sketchybar
+#hyper - space : sketchybar --bar hidden=toggle
+#hyper - r : brew services restart sketchybar
 
 
 # #Start/Stopping Yabai
