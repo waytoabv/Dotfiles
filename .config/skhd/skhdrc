@@ -1,19 +1,18 @@
 #!/bin/bash
 
-## Navigation (lalt - ...)
 
-# Extended Window Navigation: lalt - {h, ä}
+# Extended Window Navigation: hyper - {h, ä}
 hyper -    h : yabai -m window --focus first
 hyper - 0x27 : yabai -m window --focus  last
 
 # Float / Unfloat window: lalt - space
 lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
+# Stack layout
 hyper - s : yabai -m space --layout stack
-# Make window zoom to fullscreen: shift + lalt - f
+# Make window zoom to fullscreen
 hyper - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
 
-## Window Movement (shift + lalt - ...)
-# Moving windows in spaces: shift + lalt - {j, k, l, ö}
+# Window Movement (hyper- ...)
 hyper - j : yabai -m window --warp west || $(yabai -m window --display west && yabai -m display --focus west && yabai -m window --warp last) || yabai -m window --move rel:-10:0
 hyper - k : yabai -m window --warp south || $(yabai -m window --display south && yabai -m display --focus south) || yabai -m window --move rel:0:10
 hyper - l : yabai -m window --warp north || $(yabai -m window --display north && yabai -m display --focus north) || yabai -m window --move rel:0:-10
@@ -27,20 +26,17 @@ hyper - 3 : yabai -m window --space 3 && yabai -m space --focus 3
 hyper - 4 : yabai -m window --space 4 && yabai -m space --focus 4
 
 
-
-
-
 hyper - p : yabai -m window --space prev && yabai -m space --focus prev
 hyper - n : yabai -m window --space next && yabai -m space --focus next
 
-# Mirror Space on X and Y Axis: shift + lalt - {x, y}
+# Mirror Space on X and Y Axis
 hyper - x : yabai -m space --mirror x-axis
 hyper - y : yabai -m space --mirror y-axis
 
-# Equalize size of windows: ctrl + lalt - e
+# Equalize size of windows
 hyper - e : yabai -m space --balance
 
-# Enable / Disable gaps in current workspace: ctrl + lalt - g
+# Enable / Disable gaps in current workspace
 hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap;
 
 # Enable / DIsbale Borders
@@ -52,15 +48,28 @@ alt - down : yabai -m window --focus stack.next
 alt - up : yabai -m window --focus stack.prev
 
 
+#Custom rcmd
+rcmd - 0x29 : open -a Dato.app
+rcmd - k : open -a Kitty.app
+rcmd - n : open -a Nova.app
+rcmd - z : open -a Zed.app
+rcmd - s : open -a SigmaOS.app
+rcmd - m : open -a Messages.app
+rcmd - x : open -a Systemeinstellungen.app
+rcmd - h : open -a "Home Assistant.app"
+rcmd - f : open -a Finder.app
+
+
+
 # Toggle sketchybar
 #hyper - space : sketchybar --bar hidden=toggle
 #hyper - r : brew services restart sketchybar
 
 
-# #Start/Stopping Yabai
-# #e.g. bind to key in skhd:
+#Restart Yabai and skhd
 hyper - 9 : yabai --restart-service
+hyper - 8 : skhd --restart-service
 
 #lunar shortcuts
-#toogle night mode: shift + lalt + ß
+#toogle night mode
 hyper - m : "${HOME}"/.scripts/lunar.sh
