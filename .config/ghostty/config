@@ -1,0 +1,40 @@
+#~~~~~~~~~~~~~~~~~~~~~~~#
+# Ghostty configuration #
+#~~~~~~~~~~~~~~~~~~~~~~~#
+
+theme = own_dracula
+
+font-family = MonoLisa
+font-family-italic = MonoLisa
+window-title-font-family = MonoLisa
+font-size = 14
+font-feature = zero
+font-feature = -ss02
+font-feature = ss03
+font-feature = ss08
+font-feature = ss15
+font-feature = ss11
+font-feature = ss06
+
+cursor-style = underline
+mouse-hide-while-typing = true
+
+macos-titlebar-style = tabs
+macos-icon-frame = chrome
+
+window-padding-x = 20
+window-padding-y = 20
+window-padding-color = background
+
+background-opacity = 0.98
+background-blur-radius = 12
+
+keybind = super+enter=new_split:right
+keybind = global:control+t=toggle_quick_terminal
+
+quick-terminal-position = center
+quick-terminal-screen = mouse
+
+# Mouse
+mouse-hide-while-typing = true
+focus-follows-mouse = true
