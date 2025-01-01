@@ -1,12 +1,12 @@
 {
 	"assistant": {
-  "default_model": {
-   "provider": "openai",
-   "model": "gpt-4o-mini"
-  },
-  "version": "2"
- },
- "features": {
+		"default_model": {
+			"provider": "openai",
+			"model": "gpt-4o-mini"
+		},
+		"version": "2"
+	},
+	"features": {
 		"inline_completion_provider": "none"
 	},
 	"scrollbar": {
@@ -22,10 +22,21 @@
 	"ui_font_family": "MonoLisa",
 	"buffer_font_family": "MonoLisa",
 	"buffer_font_features": {
+		"zero": true,
 		"ss02": true,
 		"ss03": true,
 		"ss08": true,
 		"ss15": true,
 		"ss11": true
+	},
+	"experimental.theme_overrides": {
+		"syntax": {
+			"comment": {
+				"font_style": "italic"
+			},
+			"comment.doc": {
+				"font_style": "italic"
+			}
+		}
 	}
 }

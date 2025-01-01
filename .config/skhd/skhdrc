@@ -58,6 +58,9 @@ rcmd - m : open -a Messages.app
 rcmd - x : open -a Systemeinstellungen.app
 rcmd - h : open -a "Home Assistant.app"
 rcmd - f : open -a Finder.app
+rcmd - p : open -a "PDF Expert.app"
+rcmd - g : open -a Ghostty.app
+
 
 
 

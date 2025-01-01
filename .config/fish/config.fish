@@ -9,7 +9,6 @@ set -q INFOPATH; or set INFOPATH ''
 set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
 set -gx PATH /Users/lukas/Library/Python/3.12/bin $PATH
 
-
 # custom aliases
 source ~/.config/fish/aliases.fish
 
@@ -17,10 +16,10 @@ source ~/.config/fish/aliases.fish
 set -x EDITOR nano
 set -x LESSHISTFILE /dev/null
 
+# zoxide with alias cd
+zoxide init --cmd cd fish | source
+
 # starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 starship init fish | source
 enable_transience
-
-# zoxide with alias cd
-zoxide init --cmd cd fish | source
