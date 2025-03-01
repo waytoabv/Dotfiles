@@ -1,0 +1,12 @@
+{
+  "eablokker.tabsSidebar.config.collapsedFolders" : [
+
+  ],
+  "eablokker.tabsSidebar.config.customKindGroupsOrder" : [
+    "json"
+  ],
+  "eablokker.tabsSidebar.config.customTabOrder" : [
+    "file:\/\/\/Users\/lukas\/Dotfiles\/.nova\/Configuration.json"
+  ],
+  "workspace.color" : 9
+}

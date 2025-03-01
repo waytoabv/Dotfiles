@@ -32,7 +32,7 @@ background-blur-radius = 12
 keybind = super+enter=new_split:right
 keybind = global:control+t=toggle_quick_terminal
 
-quick-terminal-position = center
+quick-terminal-position = bottom
 quick-terminal-screen = mouse
 
 # Mouse
