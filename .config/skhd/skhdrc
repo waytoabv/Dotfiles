@@ -50,16 +50,16 @@ alt - up : yabai -m window --focus stack.prev
 
 #Custom rcmd
 rcmd - 0x29 : open -a Dato.app
-rcmd - k : open -a Kitty.app
-rcmd - n : open -a Nova.app
-rcmd - z : open -a Zed.app
-rcmd - s : open -a SigmaOS.app
-rcmd - m : open -a Messages.app
-rcmd - x : open -a Systemeinstellungen.app
-rcmd - h : open -a "Home Assistant.app"
-rcmd - f : open -a Finder.app
-rcmd - p : open -a "PDF Expert.app"
-rcmd - g : open -a Ghostty.app
+# rcmd - k : open -a Kitty.app
+# rcmd - n : open -a Nova.app
+# rcmd - z : open -a Zed.app
+# rcmd - s : open -a SigmaOS.app
+# rcmd - m : open -a Messages.app
+# rcmd - x : open -a Systemeinstellungen.app
+# rcmd - h : open -a "Home Assistant.app"
+# rcmd - f : open -a Finder.app
+# rcmd - p : open -a "PDF Expert.app"
+# rcmd - g : open -a Ghostty.app
 
 
 

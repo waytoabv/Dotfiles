@@ -12,11 +12,11 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
 	yabai -m config                                 \
     	layout                      bsp         	\
 		auto_balance                on				\
-    	top_padding                 10             	\
-    	bottom_padding              10            	\
-    	left_padding                10            	\
-    	right_padding               10              \
-    	window_gap                  10              \
+    	top_padding                 6             	\
+    	bottom_padding              6            	\
+    	left_padding                6           	\
+    	right_padding               6              \
+    	window_gap                  6              \
 	    mouse_drop_action 	       	swap			\
     	focus_follows_mouse 	   	autofocus		\
 		mouse_follows_focus			on        		\
