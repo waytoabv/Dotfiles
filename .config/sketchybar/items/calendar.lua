@@ -37,7 +37,7 @@ cal:subscribe({ "forced", "routine", "system_woke" }, function(env)
 
 	cal:set({
 		icon = weekdayNames[tonumber(os.date("%w")) + 1] ..
-			os.date("%d") .. " " .. monthNames[tonumber(os.date("%m"))],
+			os.date("%d") .." ".. monthNames[tonumber(os.date("%m"))],
 		label = "｜" .. os.date("%H:%M:%S")
 	})
 end)

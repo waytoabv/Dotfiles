@@ -84,7 +84,7 @@ volume_percent:subscribe("volume_change", function(env)
 			icon = "􀑈"
 		elseif Current_output_device == "AirPods4" then
 			icon = "􁄡"
-		elseif Current_output_device == "Ear (2)" or Current_output_device == "AirPods4" then
+		elseif Current_output_device == "Ear (2)" then
 			icon = "􀪷"
 		elseif Current_output_device == "iD4" then
 			icon = "􀝎"

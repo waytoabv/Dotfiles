@@ -2,4 +2,4 @@
 
 just some dots
 
-![desktop](screenshots/desktop.png)
+![desktop](screenshots/desktop2025.png)
