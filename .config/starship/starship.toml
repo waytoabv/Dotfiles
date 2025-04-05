@@ -37,7 +37,7 @@ ssh_only = false
 format = '[$ssh_symbol](bold blue)@[$hostname]($style)'
 trim_at = '.'
 disabled = false
-aliases = { "MacBookAir" = "mac " }
+aliases = { "MacBook-Air-1" = "mac " }
 
 [directory]
 style = "bold green"

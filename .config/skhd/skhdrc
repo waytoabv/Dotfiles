@@ -65,8 +65,8 @@ rcmd - 0x29 : open -a Dato.app
 
 
 # Toggle sketchybar
-#hyper - space : sketchybar --bar hidden=toggle
-#hyper - r : brew services restart sketchybar
+hyper - space : sketchybar --bar hidden=toggle
+hyper - r : brew services restart sketchybar
 
 
 #Restart Yabai and skhd

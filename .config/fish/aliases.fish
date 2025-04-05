@@ -4,7 +4,6 @@ abbr --add cat bat
 abbr --add c clear
 abbr --add rm trash
 abbr --add mkdir 'mkdir -p -v'
-abbr --add pi 'ssh pi'
 abbr --add .. prevd
 abbr --add update 'topgrade'
 abbr --add gitl _fzf_search_git_log
@@ -21,4 +20,10 @@ end
 function fastfetch --description 'clear the terminal and run fastfetch'
     clear
     command fastfetch $argv
+end
+
+# ssh pi and clear
+function pi --description 'ssh pi and clear'
+    clear
+    command ssh pi $argv
 end
