@@ -2,7 +2,6 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
-
 local spaces = {}
 
 -- Create the container bracket for all spaces to wrap them in a background
@@ -13,7 +12,6 @@ local container_bracket = sbar.add("bracket", {}, {
 		border_width = 2,
 	},
 })
-
 
 container_bracket.items = {}
 
@@ -32,22 +30,20 @@ for i = 1, 10, 1 do
 			color = colors.spaces.inactive,
 			border_width = 0,
 			height = 12,
-			corner_radius = 12,
+			corner_radius = 6,
 		},
+		width = 12, -- Set initial width
 		popup = { background = { border_width = 0, border_color = colors.black } },
 	})
-
+	
 	spaces[i] = space
-
-
 	table.insert(container_bracket.items, space.name)
-
-
+	
 	sbar.add("space", "space.padding." .. i, {
 		space = i,
 		width = settings.group_paddings,
 	})
-
+	
 	local space_popup = sbar.add("item", {
 		position = "popup." .. space.name,
 		padding_left = 5,
@@ -60,29 +56,31 @@ for i = 1, 10, 1 do
 			},
 		},
 	})
-
+	
 	space:subscribe("space_change", function(env)
 		local selected = env.SELECTED == "true"
+		
+		-- Reverse the width values: active = long (24), inactive = round (12)
+		local initial_width = selected and 24 or 12
+		local target_width = selected and 24 or 12
+		
 		sbar.animate("tanh", 30, function(progress)
-			progress = progress or 0
-
-			local width = selected and 24 or 12
-			local radius = selected and 12 or 12
-
+			if progress == nil then progress = 0 end
+			
+			-- Calculate current width during animation
+			local current_width = initial_width + (target_width - initial_width) * progress
+			
+			-- Change both width and background
 			space:set({
+				width = current_width,
 				background = {
 					color = selected and colors.spaces.active or colors.spaces.inactive,
-					width = 12 + (24 - 12) * progress, -- Animating width
-					corner_radius = radius,
-				},
-				width = width,
+					corner_radius = 6
+				}
 			})
 		end)
 	end)
-
-
-
-
+	
 	space:subscribe("mouse.clicked", function(env)
 		if env.BUTTON == "other" then
 			space_popup:set({ background = { image = "space." .. env.SID } })
@@ -92,12 +90,12 @@ for i = 1, 10, 1 do
 			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
 		end
 	end)
-
+	
 	space:subscribe("mouse.entered", function(env)
 		space_popup:set({ background = { image = "space." .. env.SID } })
 		space:set({ popup = { drawing = "toggle" } })
 	end)
-
+	
 	space:subscribe("mouse.exited", function(_)
 		space:set({ popup = { drawing = false } })
 	end)

@@ -1,0 +1,20 @@
+2025/04/06 00:27:26 log.go:23: Protocol version: auto
+2025/04/06 00:27:26 log.go:23: Network: tcp
+2025/04/06 00:36:47 log.go:23: Protocol version: auto
+2025/04/06 00:36:47 log.go:23: Network: tcp
+2025/04/06 00:37:21 log.go:23: Protocol version: auto
+2025/04/06 00:37:21 log.go:23: Network: tcp
+2025/04/06 00:39:38 log.go:23: Protocol version: auto
+2025/04/06 00:39:38 log.go:23: Network: tcp
+2025/04/06 00:40:10 log.go:23: Protocol version: auto
+2025/04/06 00:40:10 log.go:23: Network: tcp
+2025/04/06 00:40:40 log.go:23: Protocol version: auto
+2025/04/06 00:40:40 log.go:23: Network: tcp
+2025/04/06 00:43:11 log.go:23: Protocol version: auto
+2025/04/06 00:43:11 log.go:23: Network: tcp
+2025/04/06 00:45:41 log.go:23: Protocol version: auto
+2025/04/06 00:45:41 log.go:23: Network: tcp
+2025/04/06 10:09:11 log.go:23: Protocol version: auto
+2025/04/06 10:09:11 log.go:23: Network: tcp
+2025/04/06 10:15:26 log.go:23: Protocol version: auto
+2025/04/06 10:15:26 log.go:23: Network: tcp

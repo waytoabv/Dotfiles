@@ -43,6 +43,7 @@ yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					manage=off
 yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					manage=off
 yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		manage=off
 yabai -m rule --add app="^SigmaOS$" title!="^SigmaOS$"								manage=off
+yabai -m rule --add app="^Zen$" title="^(Picture-in-Picture|Library)$"						manage=off
 yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
 yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store|Time Machine|Finder|Wetter)$" manage=off mouse_follows_focus=on
 

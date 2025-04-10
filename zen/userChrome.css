@@ -1,0 +1,34 @@
+/* workspaces ribbon */
+#navigator-toolbox[zen-sidebar-expanded="true"] {
+  & #zen-sidebar-bottom-buttons {
+	justify-content: center !important;
+  }
+#zen-workspaces-button {
+  font-size: 16px !important; /* icon size */
+  background: color-mix(in srgb, currentColor 5%, transparent 95%) !important;
+  margin-left: 1.5px !important;
+  margin-right: 1.5px !important;
+  margin-bottom: 1.5px !important;
+  padding: 5px !important;
+  display: flex !important;
+  width: 169px !important; /* real dodgy solution to the outer box width */
+  border-radius: 8px !important;
+  & toolbarbutton {
+	border-radius: 4px !important;
+  }
+}
+#zen-workspaces-button:not([as-button="true"]) toolbarbutton:not([active="true"]){
+  filter: grayscale(0.2) !important; /* change how much grayscale and opacity is applied to inactive workspaces */
+  opacity: 0.8 !important;
+  width: 23px !important;
+}
+
+
+/* Center the URL in the address bar when enabled */
+#urlbar-input-container {
+	justify-content: center !important;
+}
+  
+#urlbar-input {
+	text-align: center !important;
+}
