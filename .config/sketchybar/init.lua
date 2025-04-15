@@ -2,8 +2,6 @@
 sbar = require("sketchybar")
 
 
-sbar.exec('killall stats_provider >/dev/null; $CONFIG_DIR/sketchybar-system-stats/target/release/stats_provider --disk usage --memory swp_used ram_usage --interval 2')
-
 -- Set the bar name, if you are using another bar instance than sketchybar
 -- sbar.set_bar_name("bottom_bar")
 

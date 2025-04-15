@@ -77,7 +77,7 @@ local function windows_changed(new_windows, old_windows)
 end
 
 local function update_windows(windows)
-	-- Filter windows to exclude "Arc", "Fivenotes(WIP)" and "kitty" without titles
+	-- Filter windows to exclude "Zen PIP", "Fivenotes" and "kitty" without titles
 	local filtered_windows = {}
 	for _, window in ipairs(windows) do
 		if not ((window['app'] == "FiveNotes"
@@ -93,7 +93,7 @@ local function update_windows(windows)
 
 	-- Check if the filtered windows have actually changed
 	if not windows_changed(filtered_windows, window_cache) then
-		return -- Skip update if nothing changed
+		return
 	end
 
 	-- Update the cache with the new window state
@@ -107,11 +107,11 @@ local function update_windows(windows)
 	if count > 4 then
 		max_length = nil -- Show only the app name
 	elseif count > 3 then
-		max_length = 10
+		max_length = 15
 	elseif count > 2 then
-		max_length = 25
+		max_length = 20
 	elseif count > 1 then
-		max_length = 35
+		max_length = 30
 	else
 		max_length = 60
 	end

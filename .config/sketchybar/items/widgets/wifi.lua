@@ -3,9 +3,9 @@ local colors = require("colors")
 local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "network_update"
--- for the network interface "en0", which is fired every 2.0 seconds.
+-- for the network interface "en0", which is fired every 1.5 seconds.
 sbar.exec(
-	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
+	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 1.5")
 
 local popup_width = 250
 

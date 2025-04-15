@@ -26,6 +26,7 @@ local messages = sbar.add("item", "widgets.messages", {
 	update_freq = 1,
 })
 
+--script needed for better functionality
 messages:subscribe("routine", "forced", function(env)
   sbar.exec("$HOME/.scripts/query_messages.sh")
 end)
