@@ -4,7 +4,7 @@ local settings = require("settings")
 local app_icons = require("helpers.app_icons")
 local spaces = {}
 
--- Create the container bracket for all spaces to wrap them in a background
+
 local container_bracket = sbar.add("bracket", {}, {
 	background = {
 		color = colors.bg2,
@@ -34,6 +34,7 @@ for i = 1, 10, 1 do
 		},
 		width = 12, -- Set initial width
 		popup = { background = { border_width = 0, border_color = colors.black } },
+		position = "center"
 	})
 	
 	spaces[i] = space
@@ -42,63 +43,61 @@ for i = 1, 10, 1 do
 	sbar.add("space", "space.padding." .. i, {
 		space = i,
 		width = settings.group_paddings,
+		position = "center"
 	})
+
 	
-	local space_popup = sbar.add("item", {
-		position = "popup." .. space.name,
-		padding_left = 5,
-		padding_right = 0,
-		background = {
-			drawing = true,
-			image = {
-				corner_radius = 9,
-				scale = 0.2,
-			},
-		},
-	})
 	
 	space:subscribe("space_change", function(env)
 		local selected = env.SELECTED == "true"
-		
-		-- Reverse the width values: active = long (24), inactive = round (12)
-		local initial_width = selected and 24 or 12
+		local target_color = selected and colors.spaces.active or colors.spaces.inactive
 		local target_width = selected and 24 or 12
 		
-		sbar.animate("tanh", 30, function(progress)
-			if progress == nil then progress = 0 end
-			
-			-- Calculate current width during animation
-			local current_width = initial_width + (target_width - initial_width) * progress
-			
-			-- Change both width and background
+		--space:set({ width = 12 })
+	
+		sbar.animate("elastic", 12, function()
 			space:set({
-				width = current_width,
+				width = target_width,
 				background = {
-					color = selected and colors.spaces.active or colors.spaces.inactive,
+					color = target_color,
 					corner_radius = 6
 				}
 			})
 		end)
 	end)
-	
-	space:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "other" then
-			space_popup:set({ background = { image = "space." .. env.SID } })
-			space:set({ popup = { drawing = "toggle" } })
-		else
-			local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
-		end
-	end)
-	
-	space:subscribe("mouse.entered", function(env)
-		space_popup:set({ background = { image = "space." .. env.SID } })
-		space:set({ popup = { drawing = "toggle" } })
-	end)
-	
-	space:subscribe("mouse.exited", function(_)
-		space:set({ popup = { drawing = false } })
-	end)
+
+	-- local space_popup = sbar.add("item", {
+	-- 	position = "popup." .. space.name,
+	-- 	padding_left = 5,
+	-- 	padding_right = 0,
+	-- 	background = {
+	-- 		drawing = true,
+	-- 		image = {
+	-- 			corner_radius = 9,
+	-- 			scale = 0.2,
+	-- 		},
+	-- 	},
+	-- })
+	-- 
+	-- 
+	-- space:subscribe("mouse.clicked", function(env)
+	-- 	if env.BUTTON == "other" then
+	-- 		space_popup:set({ background = { image = "space." .. env.SID } })
+	-- 		space:set({ popup = { drawing = "toggle" } })
+	-- 	else
+	-- 		local op = (env.BUTTON == "right") and "--destroy" or "--focus"
+	-- 		sbar.exec("yabai -m space " .. op .. " " .. env.SID)
+	-- 	end
+	-- end)
+	-- 
+	-- space:subscribe("mouse.entered", function(env)
+	-- 	space_popup:set({ background = { image = "space." .. env.SID } })
+	-- 	space:set({ popup = { drawing = "toggle" } })
+	-- end)
+	-- 
+	-- space:subscribe("mouse.exited", function(_)
+	-- 	space:set({ popup = { drawing = false } })
+	-- end)
 end
 
-sbar.add("item", { position = "left", width = settings.group_paddings })
+sbar.add("item", { position = "center", width = settings.group_paddings })

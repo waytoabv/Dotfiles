@@ -23,38 +23,11 @@ local messages = sbar.add("item", "widgets.messages", {
 		border_color = colors.bg1,
 		border_width = 2,
 	},
-	update_freq = 30,
+	update_freq = 1,
 })
 
-messages:subscribe({ "routine", "front_app_changed", "space_change", "space_windows_change" }, function(env)
-	sbar.exec(
-	-- requires full disk access
-		[[sqlite3 ~/Library/Messages/chat.db "SELECT COUNT(guid) FROM message WHERE NOT(is_read) AND NOT(is_from_me) AND text !=''"]],
-		function(newmess)
-			local mess = tonumber(newmess)
-			local drawing = false
-			local string = ""
-			local color = colors.green
-
-			if mess > 0 then
-				drawing = true
-				string = tostring(mess)
-			end
-
-			messages:set({
-				label = {
-					drawing = drawing,
-					string = string,
-				},
-				icon = {
-					color = color,
-					drawing = drawing,
-				},
-				background = {
-					drawing = drawing,
-				},
-			})
-		end)
+messages:subscribe("routine", "forced", function(env)
+  sbar.exec("$HOME/.scripts/query_messages.sh")
 end)
 
 messages:subscribe("mouse.clicked", function(env)

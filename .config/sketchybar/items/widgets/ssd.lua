@@ -21,7 +21,6 @@ local ssd = sbar.add("item", "widgets.ssd", {
 	},
 })
 
-
 local ssd_volume = sbar.add("item", "widgets.ssd.volume", {
 	position = "right",
 	icon = {
@@ -42,12 +41,10 @@ local ssd_volume = sbar.add("item", "widgets.ssd.volume", {
 	update_freq = 180,
 })
 
-
 local ssd_padding = sbar.add("item", "widgets.ssd.padding", {
 	position = "right",
 	width = settings.group_paddings
 })
-
 
 local ssd_bracket = sbar.add("bracket", "widgets.ssd.bracket", {
 	ssd.name,
@@ -61,58 +58,57 @@ local ssd_bracket = sbar.add("bracket", "widgets.ssd.bracket", {
 	popup = { align = "center", height = 30 }
 })
 
-ssd_volume:subscribe({ "routine", "forced" }, function(env)
-	sbar.exec("df -H /System/Volumes/Data | awk 'END {print $5}' | sed 's/%//'", function(usedstorage)
-		if usedstorage then
-			local storage = tonumber(usedstorage)
-			if storage >= 98 then
-				Label = storage .. "%"
-				Icon = "󰪥"
-				Color = colors.red
-			elseif storage >= 88 then
-				Label = storage .. "%"
-				Icon = "󰪤"
-				Color = colors.orange
-			elseif storage >= 76 then
-				Label = storage .. "%"
-				Icon = "󰪣"
-				Color = colors.yellow
-			elseif storage >= 64 then
-				Icon = "󰪢"
-				Label = storage .. "%"
-			elseif storage >= 52 then
-				Icon = "󰪡"
-				Label = storage .. "%"
-			elseif storage >= 40 then
-				Icon = "󰪠"
-				Label = storage .. "%"
-			elseif storage >= 28 then
-				Icon = "󰪟"
-				Label = storage .. "%"
-			elseif storage >= 16 then
-				Icon = "󰪞"
-				Label = storage .. "%"
-			elseif storage >= 1 then
-				Icon = "󰝦"
-				Label = storage .. "%"
-			else
-				Icon = "󰅚"
-				Label = "whut"
-			end
+ssd:subscribe('system_stats', function(env)
+	local raw = env.DISK_USAGE
+	if not raw then return end
 
-			ssd_volume:set({
-				label = {
-					string = Label,
-					color = Color,
-				},
-				icon = {
-					string = Icon,
-					color = Color,
-				},
-			})
-		end
-	end)
+	-- Prozentzeichen entfernen und in Zahl umwandeln
+	local usedstorage = tonumber(raw:match('(%d+)'))
+	if not usedstorage then return end
+
+	local label = usedstorage .. "%"
+	local icon = "󰅚"
+	local color = nil
+
+	if usedstorage >= 98 then
+		icon = "󰪥"
+		color = colors.red
+	elseif usedstorage >= 88 then
+		icon = "󰪤"
+		color = colors.orange
+	elseif usedstorage >= 76 then
+		icon = "󰪣"
+		color = colors.yellow
+	elseif usedstorage >= 64 then
+		icon = "󰪢"
+	elseif usedstorage >= 52 then
+		icon = "󰪡"
+	elseif usedstorage >= 40 then
+		icon = "󰪠"
+	elseif usedstorage >= 28 then
+		icon = "󰪟"
+	elseif usedstorage >= 16 then
+		icon = "󰪞"
+	elseif usedstorage >= 1 then
+		icon = "󰝦"
+	else
+		label = "whut"
+	end
+
+	ssd_volume:set({
+		label = {
+			string = label,
+			color = color,
+		},
+		icon = {
+			string = icon,
+			color = color,
+		},
+	})
 end)
+
+
+
 
 ssd_volume:subscribe("mouse.clicked", function(env)
 	sbar.exec("open -a 'DaisyDisk'")
@@ -133,8 +129,8 @@ local system_indicator = sbar.add("item", {
 	label = {
 		width = 0,
 		padding_left = 0,
-		padding_right = 8,
-		string = "sys",
+		padding_right = 0,
+		string = "",
 		color = colors.bg1,
 	},
 	background = {

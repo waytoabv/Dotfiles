@@ -22,13 +22,3 @@
   opacity: 0.8 !important;
   width: 23px !important;
 }
-
-
-/* Center the URL in the address bar when enabled */
-#urlbar-input-container {
-	justify-content: center !important;
-}
-  
-#urlbar-input {
-	text-align: center !important;
-}

@@ -78,76 +78,74 @@ local ram_bracket = sbar.add("bracket", "widgets.ram.bracket", {
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
 
-ram:subscribe({ "routine", "forced" }, function(env)
-	sbar.exec("memory_pressure | grep -o 'System-wide memory free percentage: [0-9]*' | awk '{print $5}'",
-		function(freeram)
-			local usedram = 100 - tonumber(freeram)
-			local Color = colors.grey
-			local label = tostring(usedram) .. " %"
+ram:subscribe('system_stats', function(env)
+	local raw = env.RAM_USAGE
+	if not raw then return end
 
-			if usedram >= 80 then
-				Color = colors.red
-				label = "KILL ME"
-				Padding_left = 0
-			elseif usedram >= 60 then
-				Color = colors.red
-			elseif usedram >= 30 then
-				Color = colors.orange
-			elseif usedram >= 20 then
-				Color = colors.yellow
-			end
+	-- Prozent extrahieren (z. B. "76%" → 76)
+	local usedram = tonumber(raw:match('(%d+)'))
+	if not usedram then return end
 
-			ram:set({
-				label = {
-					string = label,
-					color = Color,
-					padding_left = Padding_left,
-				},
-				icon = {
-					color = Color,
-				},
-			})
-		end)
+	local Color = colors.grey
+	local label = tostring(usedram) .. " %"
+
+	if usedram >= 90 then
+	elseif usedram >= 80 then
+		Color = colors.orange
+	elseif usedram >= 70 then
+		Color = colors.yellow
+	end
+
+	ram:set({
+		label = {
+			string = label,
+			color = Color,
+			padding_left = Padding_left,
+		},
+		icon = {
+			color = Color,
+		},
+	})
 end)
 
 
 
 
-swap:subscribe({ "routine", "forced" }, function(env)
-	sbar.exec("sysctl -n vm.swapusage | awk '{print $6}' | sed 's/M//'", function(swapstore_untrimmed)
-		if swapstore_untrimmed then
-			-- Entferne das Leerzeichen am Ende der Ausgabe
-			local swapstore = swapstore_untrimmed:gsub("%s*$", "")
-			-- Ersetze das Komma durch einen Punkt
-			swapstore = swapstore:gsub(",", ".")
-			local swapuse = tonumber(swapstore)
 
-			local function formatSwapUsage(swapuse)
-				if swapuse < 1 then
-					return "0.00 Mb", colors.grey
-				elseif swapuse < 100 then
-					return string.format("%03d Mb", math.floor(swapuse)), colors.dirtywhite
-				elseif swapuse < 1000 then
-					return string.format("%03d Mb", math.floor(swapuse)), colors.yellow
-				elseif swapuse < 2000 then
-					return string.format("%.2f Gb", swapuse / 1000), colors.orange
-				elseif swapuse < 10000 then
-					return string.format("%.2f Gb", swapuse / 1000), colors.red
-				else
-					return string.format("%.1f Gb", swapuse / 1000), colors.red
-				end
-			end
+swap:subscribe('system_stats', function(env)
+	local raw = env.SWP_USED
 
-			local swapLabel, swapColor = formatSwapUsage(swapuse)
-			swap:set({
-				label = {
-					string = swapLabel,
-					color = swapColor,
-				},
-				icon = {
-					color = swapColor,
-				},
-			})
+	-- Entferne "GB", extrahiere Zahl
+	local number = raw:match("([%d%.]+)")
+	if not number then return end
+
+	local swapuse = tonumber(number)
+	if not swapuse then return end
+
+	local function formatSwapUsage(swapuse)
+		if swapuse < 0.01 then
+			return "0.00 GB", colors.grey
+		elseif swapuse < 1 then
+			return string.format("0.%02d GB", math.floor(swapuse * 100)), colors.dirtywhite
+		elseif swapuse < 10 then
+			return string.format("%.2f GB", swapuse), colors.yellow
+		elseif swapuse < 20 then
+			return string.format("%.2f GB", swapuse), colors.orange
+		else
+			return string.format("%.1f GB", swapuse), colors.red
 		end
-	end)
+	end
+
+	local swapLabel, swapColor = formatSwapUsage(swapuse)
+
+	swap:set({
+		label = {
+			string = swapLabel,
+			color = swapColor,
+		},
+		icon = {
+			color = swapColor,
+		},
+	})
 end)
+
