@@ -161,7 +161,6 @@
 	["Mailspring"] = ":mail:",
 	["MailMate"] = ":mail:",
 	["Superhuman"] = ":mail:",
-	["Spark"] = ":mail:",
 	["Secrets"] = ":one_password:",
 	["邮件"] = ":mail:",
 	["メール"] = ":mail:",

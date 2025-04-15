@@ -118,7 +118,7 @@ local function volume_collapse_details()
 	sbar.remove('/volume.device\\.*/')
 end
 
-local current_audio_device = "None"
+local Current_audio_device = "None"
 local function volume_toggle_details(env)
 	if env.BUTTON == "right" then
 		sbar.exec("open /System/Library/PreferencePanes/Sound.prefpane")
@@ -129,10 +129,9 @@ local function volume_toggle_details(env)
 	if should_draw then
 		volume_bracket:set({ popup = { drawing = true } })
 		sbar.exec("SwitchAudioSource -t output -c", function(result)
-			current_audio_device = result:sub(1, -2)
+			Current_audio_device = result:sub(1, -2)
 			sbar.exec("SwitchAudioSource -a -t output", function(available)
-				current = current_audio_device
-				local color = colors.grey
+				local current = Current_audio_device
 				local counter = 0
 
 				for device in string.gmatch(available, '[^\r\n]+') do

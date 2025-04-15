@@ -1,7 +1,5 @@
 local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
-local app_icons = require("helpers.app_icons")
 local spaces = {}
 
 
@@ -36,25 +34,24 @@ for i = 1, 10, 1 do
 		popup = { background = { border_width = 0, border_color = colors.black } },
 		position = "center"
 	})
-	
+
 	spaces[i] = space
 	table.insert(container_bracket.items, space.name)
-	
+
 	sbar.add("space", "space.padding." .. i, {
 		space = i,
 		width = settings.group_paddings,
 		position = "center"
 	})
 
-	
-	
+
+
 	space:subscribe("space_change", function(env)
 		local selected = env.SELECTED == "true"
 		local target_color = selected and colors.spaces.active or colors.spaces.inactive
 		local target_width = selected and 24 or 12
-		
-		--space:set({ width = 12 })
-	
+
+
 		sbar.animate("elastic", 12, function()
 			space:set({
 				width = target_width,
@@ -65,6 +62,8 @@ for i = 1, 10, 1 do
 			})
 		end)
 	end)
+
+	-- Logic for Space-Preview on Hover
 
 	-- local space_popup = sbar.add("item", {
 	-- 	position = "popup." .. space.name,

@@ -1,5 +1,4 @@
 local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
 
 local menu_watcher = sbar.add("item", {

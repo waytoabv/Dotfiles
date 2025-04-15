@@ -1,7 +1,0 @@
-{
-  "Lua.runtime.version": "Lua 5.4.7",
-  "Lua.hint.enable": false,
-  "Lua.diagnostics.globals": ["sbar"],
-  "Lua.diagnostics.unusedLocalExclude": ["env", "spaces", "apple", "ssd_padding", "ssd_bracket", "sbar"],
-  "format.enable": true,
-}

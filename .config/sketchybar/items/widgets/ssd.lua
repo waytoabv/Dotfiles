@@ -2,6 +2,8 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
+sbar.exec("killall swap_load >/dev/null; $CONFIG_DIR/helpers/event_providers/ssd_load/bin/ssd_load ssd_update 30")
+
 local ssd = sbar.add("item", "widgets.ssd", {
 	position = "right",
 	width = 0,
@@ -58,12 +60,8 @@ local ssd_bracket = sbar.add("bracket", "widgets.ssd.bracket", {
 	popup = { align = "center", height = 30 }
 })
 
-ssd:subscribe('system_stats', function(env)
-	local raw = env.DISK_USAGE
-	if not raw then return end
-
-	-- Prozentzeichen entfernen und in Zahl umwandeln
-	local usedstorage = tonumber(raw:match('(%d+)'))
+ssd:subscribe('ssd_update', function(env)
+	local usedstorage = tonumber(env.pressure)
 	if not usedstorage then return end
 
 	local label = usedstorage .. "%"

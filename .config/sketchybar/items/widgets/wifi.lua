@@ -187,8 +187,8 @@ wifi:subscribe({ "wifi_change", "system_woke", "forced" }, function(env)
 			color = colors.pink,
 		}
 	})
-	sbar.exec([[ipconfig getifaddr en0]], function(ip)
-		local ipconnected = not (ip == "")
+	sbar.exec([[ipconfig getifaddr en0]], function(result_ip)
+		local ipconnected = not (result_ip == "")
 
 		if ipconnected then
 			Wifi_icon = icons.wifi.connected
@@ -204,7 +204,7 @@ wifi:subscribe({ "wifi_change", "system_woke", "forced" }, function(env)
 
 		-- VPN icon
 		sbar.exec([[sleep 2; scutil --nwi | grep -m1 'utun' | awk '{ print $1 }']], function(vpn)
-			local vpnconnected = not (vpn == "")
+		 	local vpnconnected = not (vpn == "")
 
 			if vpnconnected then
 				Wifi_icon = icons.wifi.vpn

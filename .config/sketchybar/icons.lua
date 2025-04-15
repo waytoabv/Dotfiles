@@ -8,6 +8,7 @@ local icons = {
         gear = "􀍟",
         cpu = "󰒆",
         clipboard = "􀉄",
+        messages = "􀌤",
 
         space_indicator = {
             on = "󰄯",
@@ -50,7 +51,7 @@ local icons = {
         ramicons = {
             swap = "󰁄",
             ram = "󰍛",
-        }
+        },
     },
 }
 

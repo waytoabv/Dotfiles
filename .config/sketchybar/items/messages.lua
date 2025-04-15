@@ -9,7 +9,7 @@ local messages = sbar.add("item", "widgets.messages", {
 			style = settings.font.style_map["Regular"],
 			size = 13.0,
 		},
-		string = "􀌤",
+		string = icons.messages,
 		padding_left = 8,
 	},
 	label = {

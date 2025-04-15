@@ -2,6 +2,9 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
+sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/ram_load/bin/ram_load ram_update 1.0")
+sbar.exec("killall swap_load >/dev/null; $CONFIG_DIR/helpers/event_providers/swap_load/bin/swap_load swap_update 5.0")
+
 -- RAM Plugin
 local ram = sbar.add("item", "widgets.ram1", {
 	position = "right",
@@ -66,7 +69,7 @@ local ram_bracket = sbar.add("bracket", "widgets.ram.bracket", {
 	swapram.name,
 	ram.name,
 	swap.name
-}, {
+	}, {
 	background = {
 		color = colors.bg2,
 		border_color = colors.bg1,
@@ -78,12 +81,12 @@ local ram_bracket = sbar.add("bracket", "widgets.ram.bracket", {
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
 
-ram:subscribe('system_stats', function(env)
-	local raw = env.RAM_USAGE
+ram:subscribe("ram_update", function(env)
+	local raw = env.pressure
 	if not raw then return end
 
-	-- Prozent extrahieren (z. B. "76%" → 76)
-	local usedram = tonumber(raw:match('(%d+)'))
+	-- - "%" and later add " %"
+	local usedram = tonumber(raw)
 	if not usedram then return end
 
 	local Color = colors.grey
@@ -100,7 +103,6 @@ ram:subscribe('system_stats', function(env)
 		label = {
 			string = label,
 			color = Color,
-			padding_left = Padding_left,
 		},
 		icon = {
 			color = Color,
@@ -112,31 +114,28 @@ end)
 
 
 
-swap:subscribe('system_stats', function(env)
-	local raw = env.SWP_USED
+swap:subscribe('swap_update', function(env)
+	local used_gb = tonumber(env.used_gb)
+	if not used_gb then
+		print("Error: Could not get used_gb from environment")
+		return
+	end
 
-	-- Entferne "GB", extrahiere Zahl
-	local number = raw:match("([%d%.]+)")
-	if not number then return end
-
-	local swapuse = tonumber(number)
-	if not swapuse then return end
-
-	local function formatSwapUsage(swapuse)
-		if swapuse < 0.01 then
+	local function formatSwapUsage(value)
+		if value < 0.01 then
 			return "0.00 GB", colors.grey
-		elseif swapuse < 1 then
-			return string.format("0.%02d GB", math.floor(swapuse * 100)), colors.dirtywhite
-		elseif swapuse < 10 then
-			return string.format("%.2f GB", swapuse), colors.yellow
-		elseif swapuse < 20 then
-			return string.format("%.2f GB", swapuse), colors.orange
+		elseif value < 1 then
+			return string.format("0.%02d GB", math.floor(value * 100)), colors.dirtywhite
+		elseif value < 10 then
+			return string.format("%.2f GB", value), colors.yellow
+		elseif value < 20 then
+			return string.format("%.2f GB", value), colors.orange
 		else
-			return string.format("%.1f GB", swapuse), colors.red
+			return string.format("%.1f GB", value), colors.red
 		end
 	end
 
-	local swapLabel, swapColor = formatSwapUsage(swapuse)
+	local swapLabel, swapColor = formatSwapUsage(used_gb)
 
 	swap:set({
 		label = {

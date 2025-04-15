@@ -39,38 +39,6 @@ local function truncate_string(str, max_length)
 	end
 end
 
--- Function to compare tables deeply
-local function tables_equal(t1, t2)
-	if t1 == nil or t2 == nil then
-		return t1 == t2
-	end
-	
-	if type(t1) ~= "table" or type(t2) ~= "table" then
-		return t1 == t2
-	end
-	
-	-- Check if all keys in t1 exist in t2 with the same value
-	for k, v in pairs(t1) do
-		if type(v) == "table" then
-			if not tables_equal(v, t2[k]) then
-				return false
-			end
-		else
-			if v ~= t2[k] then
-				return false
-			end
-		end
-	end
-	
-	-- Check if all keys in t2 exist in t1
-	for k, _ in pairs(t2) do
-		if t1[k] == nil then
-			return false
-		end
-	end
-	
-	return true
-end
 
 -- Function to create a window hash for comparison
 local function create_window_hash(window)
@@ -87,24 +55,24 @@ local function windows_changed(new_windows, old_windows)
 	if #new_windows ~= #old_windows then
 		return true
 	end
-	
+
 	-- Create a map of window IDs for faster lookups
 	local old_window_map = {}
 	for _, window in ipairs(old_windows) do
 		old_window_map[window.id] = create_window_hash(window)
 	end
-	
+
 	-- Check if any window has changed
 	for _, window in ipairs(new_windows) do
 		local old_window = old_window_map[window.id]
-		if not old_window or 
-		   old_window.app ~= window.app or 
-		   old_window.title ~= window.title or 
+		if not old_window or
+		   old_window.app ~= window.app or
+		   old_window.title ~= window.title or
 		   old_window.has_focus ~= window["has-focus"] then
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -112,28 +80,28 @@ local function update_windows(windows)
 	-- Filter windows to exclude "Arc", "Fivenotes(WIP)" and "kitty" without titles
 	local filtered_windows = {}
 	for _, window in ipairs(windows) do
-		if not ((window['app'] == "FiveNotes" 
-		or window['app'] == "kitty" 
-		or window['app'] == "Zen") 
-		and (window['title'] == nil 
-		or window['title'] == "" 
-		or window['title'] == "Picture-in-Picture")) 
+		if not ((window['app'] == "FiveNotes"
+		or window['app'] == "kitty"
+		or window['app'] == "Zen")
+		and (window['title'] == nil
+		or window['title'] == ""
+		or window['title'] == "Picture-in-Picture"))
 		then
 			table.insert(filtered_windows, window)
 		end
 	end
-	
+
 	-- Check if the filtered windows have actually changed
 	if not windows_changed(filtered_windows, window_cache) then
 		return -- Skip update if nothing changed
 	end
-	
+
 	-- Update the cache with the new window state
 	window_cache = filtered_windows
-	
+
 	-- Remove existing items
 	sbar.remove("/apps.\\.*/")
-	
+
 	local max_length
 	local count = #filtered_windows
 	if count > 4 then
@@ -147,7 +115,7 @@ local function update_windows(windows)
 	else
 		max_length = 60
 	end
-	
+
 	for _, window in ipairs(filtered_windows) do
 		local window_label
 		if max_length then
@@ -155,11 +123,11 @@ local function update_windows(windows)
 		else
 			window_label = window['app']
 		end
-		
+
 		-- Fetch the icon for the app
 		local icon_lookup = app_icons[window['app']]
 		local icon = icon_lookup or app_icons["default"]
-		
+
 		sbar.add("item", "apps." .. window['id'], {
 			label = {
 				string = window_label,

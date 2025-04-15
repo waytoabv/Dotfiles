@@ -33,13 +33,13 @@ local function update_windows(windows)
 	-- need to check if exists
 	sbar.remove("/apps.\\.*/")
 	for _, line in ipairs(windows) do
-		width = 655 / #windows
+		Width = 655 / #windows
 		sbar.add("item", "apps." .. line['id'], {
 			label = {
 				string = line['app'] .. ": " .. line['title'],
-				max_chars = width,
+				max_chars = Width,
 				scroll_duration = 150,
-				width = width,
+				width = Width,
 				highlight_color = colors.pink,
 				highlight = line['has-focus'],
 			},
