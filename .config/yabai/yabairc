@@ -12,7 +12,7 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
 	yabai -m config                                 \
     	layout                      bsp         	\
 		auto_balance                on				\
-    	top_padding                 46             	\
+    	top_padding                 6             	\
     	bottom_padding              6            	\
     	left_padding                6          	    \
     	right_padding               6               \
