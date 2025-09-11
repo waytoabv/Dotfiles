@@ -12,11 +12,11 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
 	yabai -m config                                 \
     	layout                      bsp         	\
 		auto_balance                on				\
-    	top_padding                 44             	\
-    	bottom_padding              10            	\
-    	left_padding                10          	\
-    	right_padding               10              \
-    	window_gap                  10              \
+    	top_padding                 46             	\
+    	bottom_padding              6            	\
+    	left_padding                6          	    \
+    	right_padding               6               \
+    	window_gap                  6               \
 	    mouse_drop_action 	       	swap			\
     	focus_follows_mouse 	   	autofocus		\
 		mouse_follows_focus			on        		\
@@ -28,23 +28,23 @@ yabai -m signal --add event=window_title_changed action="sketchybar --trigger ti
         insert_feedback_color      	0xff9dd274      \
 
 # 64 left for vertical sketchy
-# 44 top for top sketchybar
+# 44 top for top sketchybar or 40?
+
 
 # Disable specific apps
-yabai -m rule --add label="sys" app="^System.*einstellungen$"   					manage=off
-yabai -m rule --add app="^iTerm"													manage=off mouse_follows_focus=on
-yabai -m rule --add app="^Lunar$" title="^Settings"									manage=off
-yabai -m rule --add app="^Grila$"               									manage=off
-yabai -m rule --add app="^BusyCal$" title!="^$"										manage=off
-yabai -m rule --add app="^Spark$" title!="^Spark - INBOX$"							manage=off
-yabai -m rule --add app="^Shottr$" title="^Preferences$"							manage=off
-yabai -m rule --add app="^Arc$" title="^Lukas$"				  						manage=off
-yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					manage=off
-yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					manage=off
-yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		manage=off
-yabai -m rule --add app="^SigmaOS$" title!="^SigmaOS$"								manage=off
-yabai -m rule --add app="^CleanShot X$"	title!="^(General|Annotate)$"				manage=on mouse_follows_focus=on
-yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store|Time Machine|Finder|Wetter)$" manage=off mouse_follows_focus=on
+yabai -m rule --add label="sys" app="^System.*einstellungen$"   					                  manage=off
+yabai -m rule --add app="^Lunar$" title="^Settings"									                  manage=off
+yabai -m rule --add app="^Cling$"               									                  manage=off
+yabai -m rule --add app="^Shottr$"                      							                  manage=off # title="^Preferences$"
+yabai -m rule --add app="^Find Any File$" title="^Find Any File$"					                  manage=off
+yabai -m rule --add app="^Finder$" title="^Papierkorb$|Kopieren$"					                  manage=off
+yabai -m rule --add app="^BetterTouchTool$" title="^BetterTouchTool Settings$" 		                  manage=off
+yabai -m rule --add app="^SigmaOS$" title!="^SigmaOS$"								                  manage=off
+yabai -m rule --add app="^Zen$" title="^(Picture-in-Picture|Library|Paypal Checkout)$"			      manage=off
+yabai -m rule --add app="^(Orion|Orion RC)$" title="^(Orion Preview|General|Tabs|Appearance|Browsing|Sync|Passwords|Privacy|Search|Websites|Advanced|Plus|Extensions|History|Bookmarks|Reading List|Passwords|Profiles)$"	                         manage=off mouse_follows_focus=on
+yabai -m rule --add app="^(Sideloadly!|Messages|MacUpdater|Alfred Preferences|Transmission|Little Snitch|ProtonVPN|Proton VPN|WireGuard-Tunnel verwalten|IINA|Pixea|AltTab|WinDiskWriter|AppCleaner|Secrets|Bartender 5|DaisyDisk|Warnwetter|Keka|MediaMate|Rechner|App Store|Time Machine|Finder|Wetter|Monarch)$" manage=off mouse_follows_focus=on
+
+
 
 
 

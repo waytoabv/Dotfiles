@@ -3,10 +3,11 @@
 
   ],
   "eablokker.tabsSidebar.config.customKindGroupsOrder" : [
-    "json"
+    "plaintext"
   ],
   "eablokker.tabsSidebar.config.customTabOrder" : [
-    "file:\/\/\/Users\/lukas\/Dotfiles\/.nova\/Configuration.json"
+    "file:\/\/\/Users\/lukas\/Dotfiles\/.config\/fish\/config.fish"
   ],
-  "workspace.color" : 9
+  "workspace.art_style" : 0,
+  "workspace.color" : 14
 }

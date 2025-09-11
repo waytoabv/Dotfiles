@@ -2,7 +2,7 @@
 # Ghostty configuration #
 #~~~~~~~~~~~~~~~~~~~~~~~#
 
-theme = own_dracula
+theme = pro
 
 font-family = MonoLisa
 font-family-italic = MonoLisa
@@ -34,7 +34,11 @@ keybind = global:control+t=toggle_quick_terminal
 
 quick-terminal-position = bottom
 quick-terminal-screen = mouse
+quick-terminal-size = 50%,75%
 
 # Mouse
 mouse-hide-while-typing = true
 focus-follows-mouse = true
+
+
+auto-update-channel = tip

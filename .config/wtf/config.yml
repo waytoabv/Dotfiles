@@ -1,0 +1,138 @@
+wtf:
+ colors:
+   checked: yellow
+   text: white
+   title: lightgrey
+   background:
+   border:
+     focusable: yellow
+     focused: purple 
+     normal: lightgrey
+   highlight:
+     fore: red
+     back: green
+ 
+ 
+ refreshInterval: 1
+ 
+ mods:
+   digitalclock:
+     enabled: true
+     withDatePrefix: false
+     dateFormat: "Monday, January 2 2006"
+     color: yellow
+     font: digitalfont
+     title: ""
+     hourFormat: 12
+     position:
+       top: 0
+       left: 0
+       height: 1
+       width: 1
+     refreshInterval: 1s
+     type: "digitalclock"
+ 
+   cmdrunner:
+     title: "Calendar"
+     args: ["-ec 'Found in Natural Language,CCSF'", "-npn", "-nc", "-iep 'datetime,title'", "-po 'datetime,title'", "-eed", "-ea", "-n", "-li 4", "-ps '|: |'", "-b ''", "eventsToday"]
+     cmd: "/opt/homebrew/bin/icalBuddy"
+     enabled: true
+     position:
+       top: 1
+       left: 0 
+       width: 1
+       height: 2
+     refreshInterval: 30
+ 
+   prettyweather:
+     enabled: true
+     city: "wroclaw"
+     position:
+       top: 0
+       left: 1
+       width: 1
+       height: 1
+     refreshInterval: 5m
+     unit: "m"
+     view: 0
+     language: "en"
+ 
+   clocks:
+     title: "Time Zones"
+     colors:
+       rows:
+         even: "lightgrey"
+         odd: "white"
+     enabled: true
+     dateFormat: ""
+     timeFormat: "03:04 PM MST"
+     locations:
+       Pacifica: "America/Los_Angeles"
+       New York: "America/New_York"
+       London: "Europe/London"
+       Warsaw: "Europe/Warsaw"
+       Bangalore: "Asia/Kolkata"
+       Tokyo: "Asia/Tokyo"
+     position:
+       top: 0
+       left: 2
+       width: 1
+       height: 1
+     refreshInterval: 15
+     sort: "chronological"
+     type: "clocks"
+ 
+   uptime:
+     title: "Uptime"
+     args: [""]
+     cmd: "uptime"
+     enabled: true
+     position:
+       top: 3
+       left: 0 
+       width: 1
+       height: 1
+     refreshInterval: 30
+     type: cmdrunner
+ 
+   feedreader:
+     title: "RSS"
+     enabled: true
+     feeds:
+       - http://feeds.bbci.co.uk/news/rss.xml
+       - https://news.ycombinator.com/rss
+     feedLimit: 20
+     position:
+       top: 1
+       left: 1
+       width: 2
+       height: 1
+     refreshInterval: 14400
+ 
+   ipinfo:
+     title: "IP Info"
+     colors:
+       name: "lightblue"
+       value: "white"
+     enabled: true
+     position:
+       top: 2
+       left: 1
+       height: 1
+       width: 1
+     refreshInterval: 150
+ 
+ 
+   resourceusage:
+     title: "Resources"
+     cpuCombined: false
+     enabled: true
+     position:
+       top: 2
+       left: 2
+       height: 2
+       width: 1
+     refreshInterval: 1s
+     showCPU: true
+     showMem: true
+     showSwp: true

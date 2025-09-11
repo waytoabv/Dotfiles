@@ -1,6 +1,5 @@
 --only for DWD (Deutscher Wetterdienst)
 
-local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
@@ -28,9 +27,7 @@ local weather_info = sbar.add("bracket", "widgets.weather.info", {
 	weather_icon.name,
 }, {
 	background = {
-		color = colors.bg2,
-		border_color = colors.bg1,
-		border_width = 2,
+		color = colors.bg1,
 	},
 	popup = { align = "center", height = 30 }
 })
@@ -109,12 +106,6 @@ weather_icon:subscribe({ "routine", "forced", "system_woke" }, function(env)
 		end
 	end)
 end)
-
-
-sbar.add("item", "widgets.weather_icon.padding", {
-	position = "right",
-	width = settings.group_paddings
-})
 
 
 local station_name = sbar.add("item", {

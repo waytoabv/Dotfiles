@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Query yabai for window info
-yabai_output=$(yabai -m query --windows app,title --window)
+yabai_output=$(yabai -m query --windows id,title,app,has-focus --space)
 
 # Check if the output is empty
 if [ -z "$yabai_output" ]; then
